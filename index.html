@@ -148,7 +148,7 @@ body{font-family:'Segoe UI',Arial,sans-serif;font-size:13px;background:#F4F4F4}
   <div class="nsec">Vistas</div>
   <button class="nb on" onclick="setV('resumen',this)"><i class="ti ti-layout-dashboard nbi"></i><span class="nbl">Resumen general</span></button>
   <button class="nb" onclick="setV('impulso',this)"><i class="ti ti-speakerphone nbi"></i><span class="nbl">Impulsación</span></button>
-  <button class="nb" onclick="setV('empresas',this)"><i class="ti ti-building nbi"></i><span class="nbl">Empresas</span><span class="nc" id="cnt-badge">43</span></button>
+  <button class="nb" onclick="setV('empresas',this)"><i class="ti ti-building nbi"></i><span class="nbl">Empresas</span><span class="nc" id="cnt-badge">56</span></button>
   <button class="nb" onclick="setV('analitica',this)"><i class="ti ti-chart-line nbi"></i><span class="nbl">Analítica</span></button>
 
   <div class="sbf">GS1 Costa Rica · 2026<br>GS1 Digital Link</div>
@@ -159,7 +159,7 @@ body{font-family:'Segoe UI',Arial,sans-serif;font-size:13px;background:#F4F4F4}
   <div class="topbar">
     <div>
       <div class="tbt" id="page-title">GS1 Digital Link — Resumen general</div>
-      <div class="tbs">Datos actualizados junio 2026</div>
+      <div class="tbs">Datos actualizados al 30 de junio 2026</div>
     </div>
     <div style="display:flex;align-items:center;gap:8px;">
       <span style="font-size:11px;background:#EEF0FF;color:#3D35A0;padding:4px 12px;border-radius:20px;font-weight:600;border:1px solid #C8CCFF;">
@@ -198,7 +198,7 @@ var empresas = [
   {nombre:"WALMART",                                   etapa:"seguimiento",depto:"Proyectos",           cat:"CATEGORIA 20",   fecha:null},
   {nombre:"DOS PINOS",                                 etapa:"seguimiento",depto:"Comercial",           cat:"CATEGORIA 20",   fecha:null},
   {nombre:"EAGLE",                                     etapa:"potencial",  depto:"Comercial",           cat:"CATEGORIA 20",   fecha:null},
-  {nombre:"HEALTHICAL SA",                             etapa:"potencial",  depto:"Comercial",           cat:"CATEGORIA 20",   fecha:null},
+  {nombre:"HEALTHICAL SA",                              etapa:"potencial",  depto:"Comercial",           cat:"CATEGORIA 20",   fecha:null},
   {nombre:"3102949054 SRL",                            etapa:"creado",     depto:"Proyectos",           cat:"CATEGORIA 1",    fecha:"29 may 2026"},
   {nombre:"BRENTS BREWS SA",                           etapa:"creado",     depto:"Proyectos",           cat:"CATEGORIA 6",    fecha:"10 jun 2026"},
   {nombre:"INDUSTRIAS DE HUEVO INNOVO SA",             etapa:"creado",     depto:"Proyectos",           cat:"CATEGORIA 19",   fecha:"10 jun 2026"},
@@ -216,8 +216,21 @@ var empresas = [
   {nombre:"TOBIAS MORA CHAVES LTDA",                   etapa:"seguimiento",depto:"Servicio al cliente", cat:"CATEGORIA 5",    fecha:null},
   {nombre:"EXSUS MEDICA SA",                           etapa:"potencial",  depto:"Servicio al cliente", cat:"SIN CLASIFICAR",  fecha:null},
   {nombre:"INDUSTRIA DE SALSAS Y PIMIENTA LA UNICA SA",etapa:"seguimiento",depto:"Servicio al cliente", cat:"CATEGORIA 8",    fecha:null},
-  {nombre:"LIENZO INFINITO SA",                        etapa:"potencial",  depto:"—",                   cat:"SIN CLASIFICAR",  fecha:null},
-  {nombre:"MULTILINEAS VISAN SA",                          etapa:"seguimiento",depto:"Servicio al cliente", cat:"CATEGORIA 10",   fecha:null}
+  {nombre:"LIENZO INFINITO SA",                        etapa:"potencial",  depto:"\u2014",                   cat:"SIN CLASIFICAR",  fecha:null},
+  {nombre:"MULTILINEAS VISAN SA",                      etapa:"creado",     depto:"Proyectos",           cat:"CATEGORIA 10",   fecha:"23 jun 2026"},
+  {nombre:"KEILOR FABIAN SALAZAR SERRANO",             etapa:"creado",     depto:"Proyectos",           cat:"CATEGORIA 1",    fecha:"17 jun 2026"},
+  {nombre:"COMPANIA VETERINARIA DE IMPORTACIONES VETIM SA",etapa:"creado", depto:"Proyectos",           cat:"CATEGORIA 20",   fecha:"26 jun 2026"},
+  {nombre:"ANA LETICIA NUNEZ SANCHO",                  etapa:"creado",     depto:"Proyectos",           cat:"CATEGORIA 5",    fecha:"18 jun 2026"},
+  {nombre:"GRUPO AGAVE SRL",                            etapa:"creado",     depto:"Proyectos",           cat:"CATEGORIA 10",   fecha:"18 jun 2026"},
+  {nombre:"WILBERTH ESTEBAN JIMENEZ CREED",            etapa:"creado",     depto:"Proyectos",           cat:"CATEGORIA 1",    fecha:"22 jun 2026"},
+  {nombre:"GRUPO ERLO SA",                              etapa:"creado",     depto:"Proyectos",           cat:"CATEGORIA 12",   fecha:"22 jun 2026"},
+  {nombre:"LUFFACLEAN SRL",                              etapa:"creado",     depto:"Proyectos",           cat:"CATEGORIA 5",    fecha:"22 jun 2026"},
+  {nombre:"MASALA ALIMENTOS Y BEBIDAS LTDA",            etapa:"creado",     depto:"Proyectos",           cat:"CATEGORIA 1",    fecha:"23 jun 2026"},
+  {nombre:"QCCM REPRESENTACIONES INTERNACIONALES LTDA",etapa:"creado",     depto:"Proyectos",           cat:"CATEGORIA 4",     fecha:"18 jun 2026"},
+  {nombre:"Roberto Giron",                              etapa:"potencial",  depto:"Servicio al cliente", cat:"SIN CLASIFICAR",  fecha:null},
+  {nombre:"INVERSIONES DANIVAR Y SANCHEZ LTDA",         etapa:"potencial",  depto:"Servicio al cliente", cat:"SIN CLASIFICAR",  fecha:null},
+  {nombre:"Jordan 1 Treece",                            etapa:"potencial",  depto:"Servicio al cliente", cat:"SIN CLASIFICAR",  fecha:null},
+  {nombre:"Edwin Gonzalez Rojas",                       etapa:"potencial",  depto:"Servicio al cliente", cat:"SIN CLASIFICAR",  fecha:null}
 ];
 var TOTAL_ACTIVAS_ORG = 2343;
 
@@ -265,9 +278,9 @@ function render(view) {
 function viewResumen() {
   var donut = (function(){
     var stages = [
-      {label:"Potencial",        count:10, pct:24, color:"#F26522", bg:"rgba(242,101,34,.13)", border:"#F26522"},
-      {label:"En seguimiento",   count:12, pct:28, color:"#2980B9", bg:"rgba(41,128,185,.13)", border:"#2980B9"},
-      {label:"Cliente creado DL",count:21, pct:55, color:"#27AE60", bg:"rgba(39,174,96,.16)",  border:"#27AE60"}
+      {label:"Potencial",        count:14, pct:25, color:"#F26522", bg:"rgba(242,101,34,.13)", border:"#F26522"},
+      {label:"En seguimiento",   count:11, pct:20, color:"#2980B9", bg:"rgba(41,128,185,.13)", border:"#2980B9"},
+      {label:"Cliente creado DL",count:31, pct:55, color:"#27AE60", bg:"rgba(39,174,96,.16)",  border:"#27AE60"}
     ];
     var W = 260, rowH = 56, gap = 4;
     var fullH = stages.length * rowH + (stages.length - 1) * gap + 36;
@@ -305,24 +318,26 @@ function viewResumen() {
       + '</div>';
   })();
 
-  var roadmap = '<div class="card"><div class="ch"><i class="ti ti-chart-bar cic"></i><span class="ctit">Activaciones por mes &mdash; Cliente creado DL (mar&ndash;dic 2026)</span></div><div style="position:relative;height:220px;"><canvas id="c-roadmap" role="img" aria-label="Activaciones por mes de cliente creado DL"></canvas></div><div style="margin-top:10px;padding-top:8px;border-top:1px solid #F4F4F4;font-size:10px;color:#888;">Acumulado al mes actual: <strong style="color:#003C71;">21 empresas activas</strong>. Los meses sin activaciones aparecen en 0.</div></div>';
+  var roadmap = '<div class="card"><div class="ch"><i class="ti ti-chart-bar cic"></i><span class="ctit">Activaciones por mes &mdash; Cliente creado DL (mar&ndash;dic 2026)</span></div><div style="position:relative;height:220px;"><canvas id="c-roadmap" role="img" aria-label="Activaciones por mes de cliente creado DL"></canvas></div><div style="margin-top:10px;padding-top:8px;border-top:1px solid #F4F4F4;font-size:10px;color:#888;">Acumulado al mes actual: <strong style="color:#003C71;">31 empresas activas</strong>. Los meses sin activaciones aparecen en 0.</div></div>';
 
   var catData = [
-    {cat:"Cat. 1",        pot:0, seg:0, cre:5, total:5},
+    {cat:"Cat. 1",        pot:0, seg:0, cre:8, total:8},
     {cat:"Cat. 2",        pot:0, seg:0, cre:5, total:5},
     {cat:"Cat. 3",        pot:0, seg:1, cre:0, total:1},
-    {cat:"Cat. 5",        pot:0, seg:2, cre:1, total:3},
+    {cat:"Cat. 4",        pot:0, seg:0, cre:1, total:1},
+    {cat:"Cat. 5",        pot:0, seg:2, cre:3, total:5},
     {cat:"Cat. 6",        pot:0, seg:0, cre:3, total:3},
     {cat:"Cat. 7",        pot:0, seg:0, cre:1, total:1},
     {cat:"Cat. 8",        pot:0, seg:1, cre:1, total:2},
-    {cat:"Cat. 10",       pot:0, seg:1, cre:1, total:2},
+    {cat:"Cat. 10",       pot:0, seg:0, cre:3, total:3},
     {cat:"Cat. 11",       pot:0, seg:0, cre:1, total:1},
+    {cat:"Cat. 12",       pot:0, seg:0, cre:1, total:1},
     {cat:"Cat. 17",       pot:0, seg:1, cre:0, total:1},
     {cat:"Cat. 19",       pot:0, seg:1, cre:1, total:2},
-    {cat:"Cat. 20",       pot:5, seg:3, cre:4, total:12},
-    {cat:"Sin clasificar",pot:5, seg:0, cre:0, total:5}
+    {cat:"Cat. 20",       pot:5, seg:5, cre:3, total:13},
+    {cat:"Sin clasificar",pot:9, seg:0, cre:0, total:9}
   ];
-  var maxT = 12;
+  var maxT = 13;
   var catRows = catData.map(function(r,i){
     var bg = i%2===0 ? "#fff" : "#FAFAFA";
     var potCell = r.pot>0 ? '<span style="background:#FEF0E8;color:#B84C18;font-size:10px;padding:1px 7px;border-radius:10px;font-weight:600;">'+r.pot+'</span>' : '<span style="color:#D0D0D0;">-</span>';
@@ -364,18 +379,18 @@ function viewResumen() {
   return '<div class="kg">'
     + '<div class="kp ko">'
     +   '<div class="kic"><i class="ti ti-building"></i></div>'
-    +   '<div class="kv">24</div>'
+    +   '<div class="kv">56</div>'
     +   '<div class="kla">Empresas en pipeline</div>'
     +   '<div class="ksb">Total gestionadas</div>'
     + '</div>'
     + '<div class="kp" style="border-top-color:#8E44AD;">'
     +   '<div class="kic" style="color:#8E44AD;"><i class="ti ti-percentage"></i></div>'
-    +   '<div class="kv" style="font-size:22px;">0.90%</div>'
+    +   '<div class="kv" style="font-size:22px;">1.32%</div>'
     +   '<div class="kla" style="display:flex;align-items:center;">Masificacion'
     +     '<span class="tip-wrap"><i class="tip-icon ti ti-info-circle"></i>'
     +     '<span class="tip-box">Base de 2 343 afiliados activos que cerraron contrato en 2025.</span></span>'
     +   '</div>'
-    +   '<div class="ksb">21 de 2 343 empresas activas</div>'
+    +   '<div class="ksb">31 de 2 343 empresas activas</div>'
     + '</div>'
     + '<div class="kp" style="border-top-color:#16A085;">'
     +   '<div class="kic" style="color:#16A085;"><i class="ti ti-microscope"></i></div>'
@@ -391,7 +406,7 @@ function viewResumen() {
     + '</div>'
     + '</div>'
     + '<div class="grid2">' + donut
-    + '<div class="card">' + '<div class="ch"><i class="ti ti-bulb cic"></i><span class="ctit">Oportunidades identificadas</span></div>' + '<div class="grid2" style="gap:10px;">' + '<div class="opp-card" style="background:#D4EFDF;border-color:#A9DFBF;"><div class="opp-title" style="color:#1A6B33;">Activos en GS1 Digital Link</div><div class="opp-num">21</div><div class="opp-desc">Empresas con acceso operativo. Cada nueva activacion amplia la cobertura de trazabilidad en la cadena de valor.</div></div>' + '<div class="opp-card" style="background:#D6EAF8;border-color:#AED6F1;"><div class="opp-title" style="color:#1A5276;">Proximas activaciones</div><div class="opp-num">12</div><div class="opp-desc">Empresas en seguimiento activo. Convertir este grupo es la palanca de crecimiento inmediata del servicio.</div></div>' + '<div class="opp-card" style="background:#EEF0FF;border-color:#C8CCFF;"><div class="opp-title" style="color:#3D35A0;">&#9650; Grandes cuentas tractoras (Cat. 20)</div><div class="opp-num" style="color:#3D35A0;">12</div><div class="opp-desc" style="color:#3D35A0;">El 50% del pipeline son empresas de alta categoria. Su adopcion genera efecto multiplicador: al exigir DL a sus proveedores, activan automaticamente cadenas completas de abastecimiento, acelerando la masificacion de forma organica.</div></div>' + '<div class="opp-card" style="background:#FFF8E7;border-color:#F5E4A0;"><div class="opp-title" style="color:#7A4D00;">&#9650; Segmento PYME (Cat. 1-10)</div><div class="opp-num" style="color:#7A4D00;">22</div><div class="opp-desc" style="color:#7A4D00;">22 PYMES activas en el pipeline (51% del total gestionado). 17 ya cuentan con DL creado, liderando la adopcion por encima de cualquier otro segmento. Con el 70%+ de afiliados siendo PYMES, este es el principal motor de masificacion a escala.</div></div>' + '</div></div>'
+    + '<div class="card">' + '<div class="ch"><i class="ti ti-bulb cic"></i><span class="ctit">Oportunidades identificadas</span></div>' + '<div class="grid2" style="gap:10px;">' + '<div class="opp-card" style="background:#D4EFDF;border-color:#A9DFBF;"><div class="opp-title" style="color:#1A6B33;">&#9650; Activos en GS1 Digital Link</div><div class="opp-num" style="color:#1A6B33;">31</div><div class="opp-desc" style="color:#1A6B33;">El acumulado salto de 8 a 31 empresas en junio (x3.9), el mes de mayor activacion del servicio hasta la fecha. Esta aceleracion confirma que el modelo de impulso esta encontrando tracion real en el segmento correcto.</div></div>' + '<div class="opp-card" style="background:#D6EAF8;border-color:#AED6F1;"><div class="opp-title" style="color:#1A5276;">Proximas activaciones</div><div class="opp-num">11</div><div class="opp-desc">Empresas en seguimiento activo, base mas reducida que el mes anterior porque la mayoria ya migro a creado DL. Foco actual: cerrar este grupo y sumar nuevos prospectos via impulsacion.</div></div>' + '<div class="opp-card" style="background:#EEF0FF;border-color:#C8CCFF;"><div class="opp-title" style="color:#3D35A0;">&#9650; Grandes cuentas tractoras (Cat. 20)</div><div class="opp-num" style="color:#3D35A0;">13</div><div class="opp-desc" style="color:#3D35A0;">13 empresas de categoria alta en pipeline, pero solo 3 con DL activo (23%) — muy por debajo de la conversion PYME. Esta brecha es la principal oportunidad sin explotar: su adopcion arrastra cadenas completas de proveedores.</div></div>' + '<div class="opp-card" style="background:#FFF8E7;border-color:#F5E4A0;"><div class="opp-title" style="color:#7A4D00;">&#9650; Segmento PYME (Cat. 1-10)</div><div class="opp-num" style="color:#7A4D00;">29</div><div class="opp-desc" style="color:#7A4D00;">29 PYMES en pipeline (52% del total), 25 con DL creado — 86% de conversion, la tasa mas alta de toda la base y motor del salto de junio. Replicar este modelo de activacion masiva en Cat. 20 es la palanca con mayor potencial de impacto.</div></div>' + '</div></div>'
     + '</div>'
     + roadmap
     + catTable;
@@ -404,10 +419,10 @@ function viewPipeline() {
     <div class="ch"><i class="ti ti-funnel cic"></i><span class="ctit">Funnel de adopción GS1 Digital Link</span></div>
     <div class="funnel-wrap">
       ${[
-        {l:"Empresas en pipeline",n:43,p:100,c:"rgba(0,60,113,.18)",bc:"#003C71"},
-        {l:"Con categoría asignada",n:21,p:55,c:"rgba(41,128,185,.18)",bc:"#2980B9"},
-        {l:"En seguimiento activo",n:12,p:28,c:"rgba(83,74,183,.18)",bc:"#534AB7"},
-        {l:"Cliente creado DL",n:21,p:55,c:"rgba(39,174,96,.25)",bc:"#27AE60"}
+        {l:"Empresas en pipeline",n:56,p:100,c:"rgba(0,60,113,.18)",bc:"#003C71"},
+        {l:"Con categoría asignada",n:47,p:84,c:"rgba(41,128,185,.18)",bc:"#2980B9"},
+        {l:"En seguimiento activo",n:11,p:20,c:"rgba(83,74,183,.18)",bc:"#534AB7"},
+        {l:"Cliente creado DL",n:31,p:55,c:"rgba(39,174,96,.25)",bc:"#27AE60"}
       ].map(function(f){ return `
       <div class="funnel-row">
         <div class="funnel-lbl">${f.l}</div>
@@ -420,7 +435,7 @@ function viewPipeline() {
       </div>`; }).join("")}
     </div>
     <div style="margin-top:12px;padding-top:10px;border-top:1px solid #F4F4F4;font-size:11px;color:#888;">
-      <i class="ti ti-info-circle" style="vertical-align:-2px;margin-right:4px;"></i>21 empresas con acceso creado DL: 1 en marzo, 5 en mayo y 15 nuevas en junio 2026.
+      <i class="ti ti-info-circle" style="vertical-align:-2px;margin-right:4px;"></i>31 empresas con acceso creado DL: 1 en marzo, 7 en mayo y 23 nuevas en junio 2026.
     </div>
   </div>
 
@@ -430,20 +445,22 @@ function viewPipeline() {
       <div class="chart-wrap" style="height:220px;"><canvas id="c-cats" role="img" aria-label="Categorías de asociado"></canvas></div>
     </div>
     <div class="card">
-      <div class="ch"><i class="ti ti-calendar-stats cic"></i><span class="ctit">Registro de accesos creados</span></div>
-      ${[
-        {d:"21 may",n:"ROMA PRINCE SA",c:"Cat. 20",color:"#27AE60"},
-        {d:"22 may",n:"3-102-954554 SRL",c:"Cat. 1",color:"#27AE60"},
-        {d:"25 may",n:"ESPARTACOCR SA",c:"Cat. 11",color:"#27AE60"},
-        {d:"26 may",n:"EXPOGREEN SEA AND LAND SA",c:"Cat. 6",color:"#27AE60"},
-        {d:"11 mar",n:"AUTOMERCADO",c:"Cat. 20",color:"#27AE60"}
-      ].map(function(a){ return `
+      <div class="ch"><i class="ti ti-calendar-stats cic"></i><span class="ctit">Registro de accesos creados — últimos 10</span></div>
+      ${(function(){
+        var meses = {ene:0,feb:1,mar:2,abr:3,may:4,jun:5,jul:6,ago:7,sep:8,oct:9,nov:10,dic:11};
+        var creados = empresas.filter(function(e){ return e.etapa==="creado" && e.fecha; });
+        creados.sort(function(a,b){
+          function pf(f){ var p=f.toLowerCase().split(" "); return new Date(parseInt(p[2]), meses[p[1]]!==undefined?meses[p[1]]:0, parseInt(p[0])); }
+          return pf(b.fecha) - pf(a.fecha);
+        });
+        return creados.slice(0,10);
+      })().map(function(a){ return `
       <div class="tl-item">
-        <div class="tl-dot" style="background:${a.color};"></div>
-        <div class="tl-text"><strong>${a.d} —</strong> ${a.n} <span class="ba bcat">${a.c}</span></div>
+        <div class="tl-dot" style="background:#27AE60;"></div>
+        <div class="tl-text"><strong>${a.fecha} —</strong> ${a.nombre} <span class="ba bcat">${a.cat.replace("CATEGORIA","Cat.")}</span></div>
       </div>`; }).join("")}
       <div style="margin-top:12px;padding:10px;background:#EAFAF1;border-radius:6px;font-size:11px;color:#1A6B33;">
-        <i class="ti ti-trending-up" style="vertical-align:-2px;margin-right:4px;"></i><strong>5 empresas</strong> con acceso DL creado — 4 registradas en días consecutivos de mayo 2026.
+        <i class="ti ti-trending-up" style="vertical-align:-2px;margin-right:4px;"></i><strong>31 empresas</strong> con acceso DL creado — 23 activadas en junio 2026, el mes de mayor crecimiento del servicio.
       </div>
     </div>
   </div>`;
@@ -475,9 +492,9 @@ function viewEmpresas(filter) {
     <div class="ch"><i class="ti ti-building-store cic"></i><span class="ctit">Listado de empresas</span><span style="margin-left:auto;font-size:11px;color:#888;">${list.length} de ${empresas.length}</span></div>
     <div class="frow" id="emp-filters">
       <button class="fbtn ${filter==='all'?'on':''}" onclick="filterEmp('all',this)">Todas (${empresas.length})</button>
-      <button class="fbtn ${filter==='potencial'?'on':''}" onclick="filterEmp('potencial',this)">Potencial (10)</button>
-      <button class="fbtn ${filter==='seguimiento'?'on':''}" onclick="filterEmp('seguimiento',this)">Seguimiento (12)</button>
-      <button class="fbtn ${filter==='creado'?'on':''}" onclick="filterEmp('creado',this)">Cliente creado DL (21)</button>
+      <button class="fbtn ${filter==='potencial'?'on':''}" onclick="filterEmp('potencial',this)">Potencial (14)</button>
+      <button class="fbtn ${filter==='seguimiento'?'on':''}" onclick="filterEmp('seguimiento',this)">Seguimiento (11)</button>
+      <button class="fbtn ${filter==='creado'?'on':''}" onclick="filterEmp('creado',this)">Cliente creado DL (31)</button>
     </div>
     <div class="tsc">
       <table class="tbl">
@@ -520,7 +537,7 @@ function viewMasif() {
         <div style="height:180px;width:180px;margin:0 auto;position:relative;">
           <canvas id="c-gauge" role="img" aria-label="Índice de activación 25%"></canvas>
           <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-40%);text-align:center;">
-            <div class="gauge-val">0.90%</div>
+            <div class="gauge-val">1.32%</div>
             <div class="gauge-sub">21 de 2 343 activas</div>
           </div>
         </div>
@@ -530,10 +547,10 @@ function viewMasif() {
     <div class="card">
       <div class="ch"><i class="ti ti-target cic"></i><span class="ctit">Metas de masificación</span></div>
       ${[
-        {l:"Cliente creado DL",v:21,t:2343,c:"#27AE60"},
-        {l:"Con categoría asignada",v:21,t:24,c:"#2980B9"},
-        {l:"En seguimiento activo",v:12,t:43,c:"#534AB7"},
-        {l:"Masificación vs total org.",v:5,t:2343,c:"#F26522"}
+        {l:"Cliente creado DL",v:31,t:2343,c:"#27AE60"},
+        {l:"Con categoría asignada",v:47,t:56,c:"#2980B9"},
+        {l:"En seguimiento activo",v:11,t:56,c:"#534AB7"},
+        {l:"Masificación vs total org.",v:31,t:2343,c:"#F26522"}
       ].map(function(m){ return `
       <div style="margin-bottom:12px;">
         <div style="display:flex;justify-content:space-between;font-size:11px;margin-bottom:4px;">
@@ -557,9 +574,11 @@ function viewImpulso() {
     {tipo:"Evento",   nombre:"Innovacore",            estado:"efectuado", mes:"May", clientes:11},
     {tipo:"Evento",   nombre:"Mesas temáticas",        estado:"efectuado", mes:"May", clientes:24},
     {tipo:"Evento",   nombre:"Expo Pyme",              estado:"efectuado", mes:"Abr", clientes:45},
-    {tipo:"Evento",   nombre:"PowerPyme",              estado:"programado",mes:"Jun", clientes:20},
+    {tipo:"Evento",   nombre:"PowerPyme",              estado:"efectuado", mes:"Jun", clientes:18},
     {tipo:"Evento",   nombre:"PowerPyme",              estado:"programado",mes:"Jul", clientes:8},
-    {tipo:"Alianza",  nombre:"QR Tracing",                estado:"programado",mes:"Dic", clientes:1}
+    {tipo:"Alianza",  nombre:"QR Tracing",             estado:"programado",mes:"Dic", clientes:1},
+    {tipo:"Evento",   nombre:"Innovacore",             estado:"programado",mes:"Ago", clientes:16},
+    {tipo:"Evento",   nombre:"Innovacore",             estado:"programado",mes:"Ago", clientes:16}
   ];
 
   var totalEf  = actividades.filter(function(a){return a.estado==="efectuado";}).reduce(function(s,a){return s+a.clientes;},0);
@@ -606,7 +625,7 @@ function viewImpulso() {
 
   var kpis = '<div class="kg">'
     +'<div class="kp kgg"><div class="kic"><i class="ti ti-calendar-check"></i></div><div class="kv">4</div><div class="kla">Actividades efectuadas</div></div>'
-    +'<div class="kp ko"><div class="kic"><i class="ti ti-calendar-event"></i></div><div class="kv">2</div><div class="kla">Actividades programadas</div></div>'
+    +'<div class="kp ko"><div class="kic"><i class="ti ti-calendar-event"></i></div><div class="kv">4</div><div class="kla">Actividades programadas</div></div>'
     +'<div class="kp kn"><div class="kic"><i class="ti ti-users"></i></div><div class="kv">'+totalEf+'</div><div class="kla">Potenciales alcanzados</div><div class="ksb">Actividades efectuadas</div></div>'
     +'<div class="kp" style="border-top-color:#8E44AD;"><div class="kic" style="color:#8E44AD;"><i class="ti ti-target"></i></div><div class="kv">'+totalProg+'</div><div class="kla">Potenciales proyectados</div><div class="ksb">Actividades programadas</div></div>'
     +'</div>';
@@ -699,76 +718,98 @@ function viewAnalitica() {
     proyectado[m] = lastReal;
   });
 
-  // Costo dinámico
-  var COST_PER_SCAN = 0.16;
-  var MARGIN_PCT    = 0.20;
-  var FIXED_COST    = 5.0;
-  function calcCosts(scans) {
-    var base    = scans * COST_PER_SCAN;
-    var margin  = base * MARGIN_PCT;
-    var total   = base + margin + FIXED_COST;
-    return {base: base, margin: margin, fixed: FIXED_COST, total: total};
+  // Costo dinámico — montos REALES mensuales (hoja "Costos" del Excel, desde Abril)
+  // "Escaneos" y "Comisión" son montos YA TOTALES por mes (no se multiplican por cantidad de escaneos)
+  var monthlyCosts = {
+    "Abr":{esc:0.148941, com:0.029788},
+    "May":{esc:0.040488, com:0.008098},
+    "Jun":{esc:0.039500, com:0.007900}
+  };
+  var FIXED_COST = 5.0;
+  // Mes base para proyección Jul–Dic = Junio (último real, ya estable vs Mayo)
+  var baseProjMonth = monthlyCosts["Jun"];
+  var monthlyTotalProj = baseProjMonth.esc + baseProjMonth.com + FIXED_COST;
+
+  function costOfMonth(monthData){
+    return {esc:monthData.esc, comm:monthData.com, fixed:FIXED_COST, total: monthData.esc + monthData.com + FIXED_COST};
   }
-  var allMonthsReal = {"Abr":129,"May":963,"Jun":441};
-  var allMonthsProj = {"Jul":proyectado["Jul"],"Ago":proyectado["Ago"],"Sep":proyectado["Sep"],"Oct":proyectado["Oct"],"Nov":proyectado["Nov"],"Dic":proyectado["Dic"]};
+
+  var realMonthsList = ["Abr","May","Jun"];
+  var projMonthsList = ["Jul","Ago","Sep","Oct","Nov","Dic"];
+
+  function sumCosts(monthDataList){
+    var acc = {esc:0, comm:0, fixed:0, total:0};
+    monthDataList.forEach(function(md){
+      var c = costOfMonth(md);
+      acc.esc += c.esc; acc.comm += c.comm; acc.fixed += c.fixed; acc.total += c.total;
+    });
+    return acc;
+  }
+  var costsReal = sumCosts(realMonthsList.map(function(m){ return monthlyCosts[m]; }));
+  var costsProj = sumCosts(projMonthsList.map(function(){ return baseProjMonth; }));
+  var costsTotal = {
+    esc: costsReal.esc + costsProj.esc,
+    comm: costsReal.comm + costsProj.comm,
+    fixed: costsReal.fixed + costsProj.fixed,
+    total: costsReal.total + costsProj.total
+  };
+
+  // Escaneos reales/proyectados (solo para mostrar volumen, no para calcular costo)
+  var realScansByMonth = {"Abr":129,"May":963,"Jun":441};
   var totalRealScans = 129 + 963 + 441;
-  var totalProjScans = Object.values(allMonthsProj).reduce(function(s,v){return s+v;},0);
-  var costsReal = calcCosts(totalRealScans);
-  var costsTotal = calcCosts(totalRealScans + totalProjScans);
+  var totalProjScans = ["Jul","Ago","Sep","Oct","Nov","Dic"].reduce(function(s,m){ return s + (proyectado[m]||0); },0);
 
   // Tabla de costos
   function fmtUSD(v){ return "$" + v.toFixed(2); }
   var costRows = [
-    {desc:"Escaneos reales (Abr–Jun)",   scans:totalRealScans,            unit:COST_PER_SCAN, subtotal:costsReal.base,   note:"Costo base"},
-    {desc:"Proyección Jun–Dic 2026",     scans:totalProjScans,            unit:COST_PER_SCAN, subtotal:totalProjScans*COST_PER_SCAN, note:"Estimado (+20%/mes)"},
-    {desc:"Margen proveedor (20%)",      scans:null,                      unit:null, subtotal:costsTotal.margin, note:"Sobre costo base total"},
-    {desc:"Costo fijo infraestructura",  scans:null,                      unit:null, subtotal:costsTotal.fixed,  note:"Mantenimiento mensual × meses activos"},
+    {desc:"Escaneos — costo mensual real (Abr–Jun)", months:3, subtotal:costsReal.esc, note:"Monto total mensual reportado, 3 meses"},
+    {desc:"Escaneos — proyección (Jul–Dic)",         months:6, subtotal:costsProj.esc, note:"Estabilizado al monto de Junio × 6 meses"},
+    {desc:"Comisión proveedor (real + proyectada)",  months:9, subtotal:costsTotal.comm, note:"20% del monto de escaneos — validado en los 3 meses reales"},
+    {desc:"Costo fijo infraestructura",               months:9, subtotal:costsTotal.fixed, note:"$5 × 9 meses (Abr–Dic 2026)"},
   ];
   var costTableRows = costRows.map(function(r,i){
     var bg = i%2===0?"#fff":"#FAFAFA";
-    var scansCell = r.scans !== null ? r.scans.toLocaleString() : "—";
-    var unitCell  = r.unit  !== null ? "$"+r.unit.toFixed(2) : "—";
     return '<tr style="background:'+bg+';">'
       + '<td style="padding:7px 10px;border-bottom:1px solid #F4F4F4;color:#003C71;font-weight:600;">'+r.desc+'</td>'
-      + '<td style="padding:7px 10px;border-bottom:1px solid #F4F4F4;text-align:right;color:#58585A;">'+scansCell+'</td>'
-      + '<td style="padding:7px 10px;border-bottom:1px solid #F4F4F4;text-align:right;color:#58585A;">'+unitCell+'</td>'
+      + '<td style="padding:7px 10px;border-bottom:1px solid #F4F4F4;text-align:right;color:#58585A;">'+r.months+' meses</td>'
       + '<td style="padding:7px 10px;border-bottom:1px solid #F4F4F4;text-align:right;font-weight:700;color:#003C71;">'+fmtUSD(r.subtotal)+'</td>'
       + '<td style="padding:7px 14px 7px 10px;border-bottom:1px solid #F4F4F4;font-size:10px;color:#888;">'+r.note+'</td>'
       + '</tr>';
   }).join('');
   var costTable = '<div class="card">'
-    + '<div class="ch"><i class="ti ti-receipt cic"></i><span class="ctit">Estimación de costos 2026</span>'
-    + '<span style="margin-left:auto;font-size:11px;color:#888;">Tarifa: $0.16 / escaneo</span></div>'
+    + '<div class="ch"><i class="ti ti-receipt cic"></i><span class="ctit">Estimación de costos 2026</span></div>'
     + '<div style="overflow-x:auto;"><table style="width:100%;border-collapse:collapse;font-size:12px;">'
     + '<thead><tr>'
     + '<th style="padding:6px 10px;border-bottom:2px solid #F4F4F4;font-size:10px;font-weight:700;color:#58585A;text-transform:uppercase;text-align:left;">Concepto</th>'
-    + '<th style="padding:6px 10px;border-bottom:2px solid #F4F4F4;font-size:10px;font-weight:700;color:#58585A;text-transform:uppercase;text-align:right;">Escaneos</th>'
-    + '<th style="padding:6px 10px;border-bottom:2px solid #F4F4F4;font-size:10px;font-weight:700;color:#58585A;text-transform:uppercase;text-align:right;">Tarifa</th>'
+    + '<th style="padding:6px 10px;border-bottom:2px solid #F4F4F4;font-size:10px;font-weight:700;color:#58585A;text-transform:uppercase;text-align:right;">Período</th>'
     + '<th style="padding:6px 10px;border-bottom:2px solid #F4F4F4;font-size:10px;font-weight:700;color:#58585A;text-transform:uppercase;text-align:right;">Subtotal</th>'
     + '<th style="padding:6px 14px 6px 10px;border-bottom:2px solid #F4F4F4;font-size:10px;font-weight:700;color:#58585A;text-transform:uppercase;">Nota</th>'
     + '</tr></thead><tbody>'+costTableRows+'</tbody>'
     + '<tfoot><tr style="background:#F8F9FA;">'
-    + '<td colspan="3" style="padding:8px 10px;font-weight:700;color:#003C71;font-size:12px;border-top:2px solid #EBEBEB;">TOTAL ESTIMADO 2026</td>'
+    + '<td colspan="2" style="padding:8px 10px;font-weight:700;color:#003C71;font-size:12px;border-top:2px solid #EBEBEB;">TOTAL ESTIMADO 2026</td>'
     + '<td style="padding:8px 10px;font-weight:700;color:#F26522;font-size:14px;border-top:2px solid #EBEBEB;text-align:right;">'+fmtUSD(costsTotal.total)+'</td>'
-    + '<td style="padding:8px 14px;border-top:2px solid #EBEBEB;font-size:10px;color:#888;">Costo base + margen + fijo</td>'
+    + '<td style="padding:8px 14px;border-top:2px solid #EBEBEB;font-size:10px;color:#888;">Escaneos + comisión + fijo</td>'
     + '</tr></tfoot>'
     + '</table></div>'
     + '<div style="margin-top:10px;padding-top:10px;border-top:1px solid #F4F4F4;display:flex;gap:16px;flex-wrap:wrap;">'
     + '<div style="background:#D4EFDF;border-radius:6px;padding:8px 14px;flex:1;min-width:140px;">'
     +   '<div style="font-size:10px;color:#1A6B33;font-weight:700;text-transform:uppercase;margin-bottom:2px;">Costo actual (real)</div>'
     +   '<div style="font-size:18px;font-weight:700;color:#1A6B33;">'+fmtUSD(costsReal.total)+'</div>'
-    +   '<div style="font-size:10px;color:#1A6B33;">'+totalRealScans+' escaneos (Abr–Jun)</div>'
+    +   '<div style="font-size:10px;color:#1A6B33;">3 meses reales (Abr–Jun) · '+totalRealScans+' escaneos</div>'
     + '</div>'
     + '<div style="background:#EEF0FF;border-radius:6px;padding:8px 14px;flex:1;min-width:140px;">'
     +   '<div style="font-size:10px;color:#3D35A0;font-weight:700;text-transform:uppercase;margin-bottom:2px;">Proyección a dic 2026</div>'
     +   '<div style="font-size:18px;font-weight:700;color:#3D35A0;">'+fmtUSD(costsTotal.total)+'</div>'
-    +   '<div style="font-size:10px;color:#3D35A0;">Proyeccion Jul–Dic (+20%/mes)</div>'
+    +   '<div style="font-size:10px;color:#3D35A0;">Monto mensual estabilizado (=Jun) × 6 meses</div>'
     + '</div>'
     + '<div style="background:#FEF0E8;border-radius:6px;padding:8px 14px;flex:1;min-width:140px;">'
     +   '<div style="font-size:10px;color:#B84C18;font-weight:700;text-transform:uppercase;margin-bottom:2px;">Escaneos proyectados</div>'
     +   '<div style="font-size:18px;font-weight:700;color:#B84C18;">'+(totalRealScans+totalProjScans).toLocaleString()+'</div>'
-    +   '<div style="font-size:10px;color:#B84C18;">Total acumulado Abr–Dic 2026</div>'
+    +   '<div style="font-size:10px;color:#B84C18;">Total acumulado Abr–Dic 2026 (referencial)</div>'
     + '</div>'
+    + '</div>'
+    + '<div style="margin-top:10px;font-size:10px;color:#888;line-height:1.5;">'
+    +   '<i class="ti ti-info-circle" style="vertical-align:-2px;margin-right:3px;"></i>Los montos de "Escaneos" y "Comisión" son costos totales mensuales reportados por el proveedor (no tarifas por escaneo individual). La proyección Jul–Dic asume que el monto mensual se mantiene estable al nivel de Junio.'
     + '</div></div>';
 
   var roadmap = '<div class="card">'
@@ -776,8 +817,10 @@ function viewAnalitica() {
     + '<span style="margin-left:auto;font-size:11px;color:#888;">Reales + proyección</span></div>'
     + '<div style="height:220px;"><canvas id="c-scan-dia" role="img" aria-label="Escaneos por mes"></canvas></div>'
     + '<div style="margin-top:10px;padding-top:8px;border-top:1px solid #F4F4F4;display:flex;gap:14px;font-size:10px;color:#888;flex-wrap:wrap;">'
-    + '<span style="display:flex;align-items:center;gap:4px;"><span style="width:10px;height:10px;border-radius:2px;background:rgba(0,60,113,.22);border:2px solid #003C71;display:inline-block;"></span>Nuevas activaciones por mes</span>'
-    + '<span style="display:flex;align-items:center;gap:4px;"><span style="width:10px;height:10px;border-radius:2px;background:rgba(242,101,34,.22);border:2px solid #F26522;display:inline-block;"></span>Acumulado real (mismo eje)</span>'
+    + '<span style="display:flex;align-items:center;gap:4px;"><span style="width:10px;height:10px;border-radius:2px;background:rgba(0,60,113,.22);border:2px solid #003C71;display:inline-block;"></span>Escaneos reales</span>'
+    + '<span style="display:flex;align-items:center;gap:4px;"><span style="width:10px;height:10px;border-radius:2px;background:rgba(242,101,34,.22);border:2px solid #F26522;display:inline-block;"></span>Escaneos proyectados</span>'
+    + '<span style="display:flex;align-items:center;gap:4px;"><span style="width:9px;height:9px;border-radius:50%;background:#534AB7;border:2px solid #fff;box-shadow:0 0 0 1px #534AB7;display:inline-block;"></span>Costo real (Abr–Jun)</span>'
+    + '<span style="display:flex;align-items:center;gap:4px;"><span style="width:9px;height:9px;border-radius:50%;background:#2980B9;border:2px solid #fff;box-shadow:0 0 0 1px #2980B9;display:inline-block;"></span>Costo estimado (Jul–Dic)</span>'
     + '</div></div>';
 
   return kpis + roadmap + tablaClientes + grid2 + costTable;
@@ -788,10 +831,10 @@ function viewAnalitica() {
 function viewClientes() {
   return `
   <div class="kg">
-    <div class="kp ko"><div class="kic"><i class="ti ti-users"></i></div><div class="kv">10</div><div class="kla">Empresas gestionadas</div><div class="ksb">Serv. al cliente</div></div>
-    <div class="kp kgg"><div class="kic"><i class="ti ti-circle-check"></i></div><div class="kv">21</div><div class="kla">Cliente creado DL</div><div class="ksb">Acceso activo</div></div>
-    <div class="kp kn"><div class="kic"><i class="ti ti-message-circle"></i></div><div class="kv">12</div><div class="kla">En seguimiento activo</div></div>
-    <div class="kp krr"><div class="kic"><i class="ti ti-alert-triangle"></i></div><div class="kv">3</div><div class="kla">Sin clasificar</div><div class="ksb">Requieren atención</div></div>
+    <div class="kp ko"><div class="kic"><i class="ti ti-users"></i></div><div class="kv">17</div><div class="kla">Empresas gestionadas</div><div class="ksb">Serv. al cliente</div></div>
+    <div class="kp kgg"><div class="kic"><i class="ti ti-circle-check"></i></div><div class="kv">31</div><div class="kla">Cliente creado DL</div><div class="ksb">Acceso activo</div></div>
+    <div class="kp kn"><div class="kic"><i class="ti ti-message-circle"></i></div><div class="kv">11</div><div class="kla">En seguimiento activo</div></div>
+    <div class="kp krr"><div class="kic"><i class="ti ti-alert-triangle"></i></div><div class="kv">9</div><div class="kla">Sin clasificar</div><div class="ksb">Requieren atención</div></div>
   </div>
 
   <div class="grid2">
@@ -799,10 +842,10 @@ function viewClientes() {
       <div class="ch"><i class="ti ti-funnel cic"></i><span class="ctit">Funnel de servicio</span></div>
       <div class="funnel-wrap">
         ${[
-          {l:"Contactados inicialmente",n:24,p:100,c:"rgba(0,60,113,.15)",bc:"#003C71"},
-          {l:"Clasificados con categoría",n:21,p:88,c:"rgba(41,128,185,.18)",bc:"#2980B9"},
-          {l:"En seguimiento activo",n:12,p:28,c:"rgba(242,101,34,.2)",bc:"#F26522"},
-          {l:"Cliente creado DL",n:21,p:55,c:"rgba(39,174,96,.25)",bc:"#27AE60"}
+          {l:"Contactados inicialmente",n:56,p:100,c:"rgba(0,60,113,.15)",bc:"#003C71"},
+          {l:"Clasificados con categoría",n:47,p:84,c:"rgba(41,128,185,.18)",bc:"#2980B9"},
+          {l:"En seguimiento activo",n:11,p:20,c:"rgba(242,101,34,.2)",bc:"#F26522"},
+          {l:"Cliente creado DL",n:31,p:55,c:"rgba(39,174,96,.25)",bc:"#27AE60"}
         ].map(function(f){ return `
         <div class="funnel-row">
           <div class="funnel-lbl" style="width:180px;">${f.l}</div>
@@ -838,10 +881,10 @@ function viewClientes() {
 function viewMercadeo() {
   return `
   <div class="kg">
-    <div class="kp ko"><div class="kic"><i class="ti ti-speakerphone"></i></div><div class="kv">24</div><div class="kla">Empresas en pipeline</div></div>
+    <div class="kp ko"><div class="kic"><i class="ti ti-speakerphone"></i></div><div class="kv">56</div><div class="kla">Empresas en pipeline</div></div>
     <div class="kp kn"><div class="kic"><i class="ti ti-presentation"></i></div><div class="kv">6</div><div class="kla">Gestionadas por Comercial</div></div>
-    <div class="kp kgg"><div class="kic"><i class="ti ti-file-check"></i></div><div class="kv">5</div><div class="kla">Cliente creado DL</div></div>
-    <div class="kp krr"><div class="kic"><i class="ti ti-clock"></i></div><div class="kv">3</div><div class="kla">Sin clasificar</div></div>
+    <div class="kp kgg"><div class="kic"><i class="ti ti-file-check"></i></div><div class="kv">31</div><div class="kla">Cliente creado DL</div></div>
+    <div class="kp krr"><div class="kic"><i class="ti ti-clock"></i></div><div class="kv">9</div><div class="kla">Sin clasificar</div></div>
   </div>
 
   <div class="card">
@@ -857,10 +900,10 @@ function viewMercadeo() {
     <div class="card">
       <div class="ch"><i class="ti ti-trending-up cic"></i><span class="ctit">Conversión del pipeline</span></div>
       ${[
-        {l:"Identificadas → Clasificadas",v:81},
-        {l:"Clasificadas → Seguimiento",v:69},
-        {l:"Seguimiento → Activadas",v:44},
-        {l:"Total identificadas → Activas",v:25}
+        {l:"Identificadas → Clasificadas",v:75},
+        {l:"Clasificadas → Con DL creado",v:74},
+        {l:"En seguimiento → Activadas (hist.)",v:74},
+        {l:"Total identificadas → Activas",v:55}
       ].map(function(r){ return `
       <div style="margin-bottom:10px;">
         <div style="display:flex;justify-content:space-between;font-size:11px;margin-bottom:3px;">
@@ -876,9 +919,9 @@ function viewMercadeo() {
 function viewProyectos() {
   return `
   <div class="kg">
-    <div class="kp kgg"><div class="kic"><i class="ti ti-circle-check"></i></div><div class="kv">21</div><div class="kla">Cliente creado DL</div><div class="ksb">En Proyectos</div></div>
-    <div class="kp ko"><div class="kic"><i class="ti ti-loader"></i></div><div class="kv">12</div><div class="kla">En seguimiento</div></div>
-    <div class="kp krr"><div class="kic"><i class="ti ti-clock-pause"></i></div><div class="kv">10</div><div class="kla">Potenciales</div></div>
+    <div class="kp kgg"><div class="kic"><i class="ti ti-circle-check"></i></div><div class="kv">31</div><div class="kla">Cliente creado DL</div><div class="ksb">En Proyectos</div></div>
+    <div class="kp ko"><div class="kic"><i class="ti ti-loader"></i></div><div class="kv">11</div><div class="kla">En seguimiento</div></div>
+    <div class="kp krr"><div class="kic"><i class="ti ti-clock-pause"></i></div><div class="kv">14</div><div class="kla">Potenciales</div></div>
     <div class="kp kn"><div class="kic"><i class="ti ti-calendar"></i></div><div class="kv">6d</div><div class="kla">Promedio activación</div><div class="ksb">Últimas 4 activaciones</div></div>
   </div>
 
@@ -901,22 +944,27 @@ function viewProyectos() {
   </div>
 
   <div class="card">
-    <div class="ch"><i class="ti ti-clock-check cic"></i><span class="ctit">Cronología de activaciones mayo 2026</span></div>
+    <div class="ch"><i class="ti ti-clock-check cic"></i><span class="ctit">Cronología de activaciones — últimos 10 registros</span></div>
     <div style="display:flex;flex-direction:column;gap:0;">
-      ${[
-        {d:"Jue 21 may",n:"ROMA PRINCE SA",c:"CATEGORIA 20"},
-        {d:"Vie 22 may",n:"3-102-954554 SRL",c:"CATEGORIA 1"},
-        {d:"Dom 25 may",n:"ESPARTACOCR SA",c:"CATEGORIA 11"},
-        {d:"Lun 26 may",n:"EXPOGREEN SEA AND LAND SA",c:"CATEGORIA 6"},
-        {d:"Mie 11 mar",n:"AUTOMERCADO",c:"CATEGORIA 20"}
-      ].map(function(a){ return `
+      ${(function(){
+        var meses = {ene:0,feb:1,mar:2,abr:3,may:4,jun:5,jul:6,ago:7,sep:8,oct:9,nov:10,dic:11};
+        var creados = empresas.filter(function(e){ return e.etapa==="creado" && e.fecha; });
+        creados.sort(function(a,b){
+          function pf(f){ var p=f.toLowerCase().split(" "); return new Date(parseInt(p[2]), meses[p[1]]!==undefined?meses[p[1]]:0, parseInt(p[0])); }
+          return pf(b.fecha) - pf(a.fecha);
+        });
+        return creados.slice(0,10);
+      })().map(function(e){ return `
       <div class="tl-item">
         <div class="tl-dot" style="background:#27AE60;margin-top:5px;"></div>
         <div class="tl-text">
-          <strong>${a.d}</strong> — ${a.n}
-          <span class="ba bcat" style="margin-left:4px;">${a.c.replace("CATEGORIA","Cat.")}</span>
+          <strong>${e.fecha}</strong> — ${e.nombre}
+          <span class="ba bcat" style="margin-left:4px;">${e.cat.replace("CATEGORIA","Cat.")}</span>
         </div>
       </div>`; }).join("")}
+    </div>
+    <div style="margin-top:10px;padding-top:8px;border-top:1px solid #F4F4F4;font-size:11px;color:#888;">
+      Total acumulado: <strong style="color:#003C71;">31 empresas</strong> con DL creado (Mar–Jun 2026). 23 de ellas activadas solo en junio.
     </div>
   </div>`;
 }
@@ -950,7 +998,7 @@ function renderCharts(view) {
           labels:["Mar","Abr","May","Jun","Jul","Ago","Sep","Oct","Nov","Dic"],
           datasets:[{
             label:"Nuevas activaciones",
-            data:[1,0,5,15,0,0,0,0,0,0],
+            data:[1,0,7,23,0,0,0,0,0,0],
             backgroundColor:"rgba(0,60,113,.22)",
             borderColor:"#003C71",
             borderWidth:2,
@@ -958,7 +1006,7 @@ function renderCharts(view) {
             order:2
           },{
             label:"Acumulado",
-            data:[1,1,6,21,21,21,21,21,21,21],
+            data:[1,1,8,31,31,31,31,31,31,31],
             type:"line",
             borderColor:"#F26522",
             backgroundColor:"rgba(242,101,34,.07)",
@@ -990,7 +1038,7 @@ function renderCharts(view) {
 
   if(view==="pipeline") {
     var ctx2 = document.getElementById("c-cats");
-    if(ctx2) new Chart(ctx2,{type:"bar",data:{labels:["Cat. 20","Sin clasificar","Cat. 1","Cat. 5","Cat. 3","Cat. 2","Cat. 6","Cat. 11","Cat. 17","Cat. 19"],datasets:[{data:[12,3,2,1,1,1,1,1,1,1],backgroundColor:["#003C71","#F26522","#27AE60","#2980B9","#8E44AD","#E74C3C","#16A085","#D35400","#1A5276","#7F8C8D"],borderRadius:4}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{grid:{display:false},ticks:{font:{size:10}}},y:{beginAtZero:true,ticks:{stepSize:1},grid:{color:"rgba(0,0,0,.05)"}},}}});
+    if(ctx2) new Chart(ctx2,{type:"bar",data:{labels:["Cat. 20","Sin clasificar","Cat. 1","Cat. 2","Cat. 5","Cat. 6","Cat. 10","Cat. 8","Cat. 19","Cat. 3","Cat. 4","Cat. 7","Cat. 11","Cat. 12","Cat. 17"],datasets:[{data:[13,9,8,5,5,3,3,2,2,1,1,1,1,1,1],backgroundColor:["#003C71","#F26522","#27AE60","#2980B9","#8E44AD","#E74C3C","#16A085","#D35400","#1A5276","#7F8C8D","#F39C12","#9B59B6","#1ABC9C","#34495E","#C0392B"],borderRadius:4}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{grid:{display:false},ticks:{font:{size:10}}},y:{beginAtZero:true,ticks:{stepSize:1},grid:{color:"rgba(0,0,0,.05)"}},}}});
   }
 
   if(view==="impulso") {
@@ -1002,14 +1050,14 @@ function renderCharts(view) {
         datasets:[
           {
             label:"Efectuado",
-            data:[80,0],
+            data:[98,0],
             backgroundColor:["rgba(0,60,113,.22)","rgba(39,174,96,.18)"],
             borderColor:["#003C71","#27AE60"],
             borderWidth:2,
             borderRadius:5
           },{
             label:"Programado",
-            data:[28,1],
+            data:[40,1],
             backgroundColor:["rgba(242,101,34,.2)","rgba(39,174,96,.12)"],
             borderColor:["#F26522","#27AE60"],
             borderWidth:2,
@@ -1039,14 +1087,14 @@ function renderCharts(view) {
         datasets:[
           {
             label:"Efectuados",
-            data:[45,35,0,0,0,0,0,0,0],
+            data:[45,35,18,0,0,0,0,0,0],
             backgroundColor:"rgba(0,60,113,.22)",
             borderColor:"#003C71",
             borderWidth:2,
             borderRadius:5
           },{
             label:"Programados",
-            data:[0,0,20,8,0,0,0,0,1],
+            data:[0,0,0,8,32,0,0,0,1],
             backgroundColor:"rgba(242,101,34,.22)",
             borderColor:"#F26522",
             borderWidth:2,
@@ -1082,10 +1130,17 @@ function renderCharts(view) {
       var allM = ["Abr","May","Jun","Jul","Ago","Sep","Oct","Nov","Dic"];
       var barVals  = allM.map(function(m){ return realData[m] || null; });
       var projVals = allM.map(function(m){ return proj[m]     || null; });
-      // Cost line: (scans * 0.16 * 1.20) + 5
+      // Costo real mensual (igual lógica que la tarjeta de Estimación de costos):
+      // "Escaneos" y "Comisión" son montos YA TOTALES por mes, no se multiplican por cantidad de escaneos.
+      var realCosts = {
+        "Abr":{esc:0.148941, com:0.029788},
+        "May":{esc:0.040488, com:0.008098},
+        "Jun":{esc:0.039500, com:0.007900}
+      };
+      var baseProj = realCosts["Jun"]; // tarifa estabilizada desde Junio para Jul-Dic
       var costLine = allM.map(function(m){
-        var s = realData[m] || proj[m] || 0;
-        return parseFloat(((s * 0.16 * 1.20) + 5).toFixed(2));
+        var c = realCosts[m] || baseProj;
+        return parseFloat((c.esc + c.com + 5.0).toFixed(2));
       });
       new Chart(ctxDia,{
         type:"bar",
@@ -1114,8 +1169,8 @@ function renderCharts(view) {
               backgroundColor:"rgba(83,74,183,.08)",
               fill:false,
               tension:.35,
-              pointRadius:4,
-              pointBackgroundColor:"#534AB7",
+              pointRadius:5,
+              pointBackgroundColor: allM.map(function(m){ return realCosts[m] ? "#534AB7" : "#2980B9"; }),
               pointBorderColor:"#fff",
               pointBorderWidth:2,
               borderWidth:2,
@@ -1127,10 +1182,13 @@ function renderCharts(view) {
         options:{
           responsive:true, maintainAspectRatio:false,
           plugins:{
-            legend:{display:true,position:"top",labels:{font:{size:10},boxWidth:10,color:"#58585A",padding:12}},
+            legend:{display:false},
             tooltip:{callbacks:{
               label:function(c){
-                if(c.datasetIndex===2) return " Costo est.: $"+c.parsed.y;
+                if(c.datasetIndex===2) {
+                  var isReal = !!realCosts[c.label];
+                  return " Costo "+(isReal?"real":"estimado")+": $"+c.parsed.y;
+                }
                 return " "+c.dataset.label+": "+(c.parsed.y||0)+" escaneos";
               }
             }}
@@ -1221,16 +1279,16 @@ function renderCharts(view) {
 
   if(view==="masif") {
     var ctx3 = document.getElementById("c-gauge");
-    if(ctx3) new Chart(ctx3,{type:"doughnut",data:{labels:["Activas","Pendientes"],datasets:[{data:[0.90,99.10],backgroundColor:["#27AE60","#F0F0F0"],borderWidth:0,circumference:180,rotation:270}]},options:{responsive:true,maintainAspectRatio:false,cutout:"72%",plugins:{legend:{display:false},tooltip:{enabled:false}}}});
+    if(ctx3) new Chart(ctx3,{type:"doughnut",data:{labels:["Activas","Pendientes"],datasets:[{data:[1.32,98.68],backgroundColor:["#27AE60","#F0F0F0"],borderWidth:0,circumference:180,rotation:270}]},options:{responsive:true,maintainAspectRatio:false,cutout:"72%",plugins:{legend:{display:false},tooltip:{enabled:false}}}});
     var ctx4 = document.getElementById("c-radar");
     if(ctx4) new Chart(ctx4,{type:"radar",data:{labels:["Adopción","Clasificación","Seguimiento","Activación","Onboarding","Retención"],datasets:[{label:"Estado actual",data:[25,81,56,25,100,75],borderColor:"#F26522",backgroundColor:"rgba(242,101,34,.15)",pointBackgroundColor:"#F26522"},{label:"Meta",data:[100,100,100,100,100,100],borderColor:"#003C71",backgroundColor:"rgba(0,60,113,.05)",pointBackgroundColor:"#003C71",borderDash:[4,3]}]},options:{responsive:true,maintainAspectRatio:false,scales:{r:{grid:{color:"rgba(0,0,0,.08)"},ticks:{display:false},suggestedMin:0,suggestedMax:100}},plugins:{legend:{display:true,position:"bottom",labels:{font:{size:10},boxWidth:10}}}}});
   }
 
   if(view==="mercadeo") {
     var ctx5 = document.getElementById("c-pipeline");
-    if(ctx5) new Chart(ctx5,{type:"bar",data:{labels:["Identificadas","Clasificadas","En seguimiento","Con demo","Cliente creado DL"],datasets:[{data:[43,38,12,21,21],backgroundColor:["rgba(0,60,113,.15)","rgba(41,128,185,.2)","rgba(83,74,183,.2)","rgba(242,101,34,.25)","rgba(39,174,96,.35)"],borderColor:["#003C71","#2980B9","#534AB7","#F26522","#27AE60"],borderWidth:2,borderRadius:4}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{grid:{display:false}},y:{beginAtZero:true,ticks:{stepSize:2},grid:{color:"rgba(0,0,0,.05)"}}}}});
+    if(ctx5) new Chart(ctx5,{type:"bar",data:{labels:["Identificadas","Clasificadas","En seguimiento","Con demo","Cliente creado DL"],datasets:[{data:[56,47,11,31,31],backgroundColor:["rgba(0,60,113,.15)","rgba(41,128,185,.2)","rgba(83,74,183,.2)","rgba(242,101,34,.25)","rgba(39,174,96,.35)"],borderColor:["#003C71","#2980B9","#534AB7","#F26522","#27AE60"],borderWidth:2,borderRadius:4}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{grid:{display:false}},y:{beginAtZero:true,ticks:{stepSize:2},grid:{color:"rgba(0,0,0,.05)"}}}}});
     var ctx6 = document.getElementById("c-segcats");
-    if(ctx6) new Chart(ctx6,{type:"pie",data:{labels:["Cat. 20 (12)","Sin clasificar (3)","Cat. 1 (2)","Otras (7)"],datasets:[{data:[12,3,2,7],backgroundColor:["#003C71","#F26522","#27AE60","#D0D0D0"],borderWidth:0}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:true,position:"right",labels:{font:{size:10},boxWidth:10}}}}});
+    if(ctx6) new Chart(ctx6,{type:"pie",data:{labels:["Cat. 20 (13)","Sin clasificar (9)","Cat. 1 (8)","Otras (26)"],datasets:[{data:[13,9,8,26],backgroundColor:["#003C71","#F26522","#27AE60","#D0D0D0"],borderWidth:0}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:true,position:"right",labels:{font:{size:10},boxWidth:10}}}}});
   }
 }
 
