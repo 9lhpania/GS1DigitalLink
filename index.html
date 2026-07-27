@@ -148,7 +148,7 @@ body{font-family:'Segoe UI',Arial,sans-serif;font-size:13px;background:#F4F4F4}
   <div class="nsec">Vistas</div>
   <button class="nb on" onclick="setV('resumen',this)"><i class="ti ti-layout-dashboard nbi"></i><span class="nbl">Resumen general</span></button>
   <button class="nb" onclick="setV('impulso',this)"><i class="ti ti-speakerphone nbi"></i><span class="nbl">Impulsación</span></button>
-  <button class="nb" onclick="setV('empresas',this)"><i class="ti ti-building nbi"></i><span class="nbl">Empresas</span><span class="nc" id="cnt-badge">56</span></button>
+  <button class="nb" onclick="setV('empresas',this)"><i class="ti ti-building nbi"></i><span class="nbl">Empresas</span><span class="nc" id="cnt-badge">78</span></button>
   <button class="nb" onclick="setV('analitica',this)"><i class="ti ti-chart-line nbi"></i><span class="nbl">Analítica</span></button>
 
   <div class="sbf">GS1 Costa Rica · 2026<br>GS1 Digital Link</div>
@@ -159,7 +159,7 @@ body{font-family:'Segoe UI',Arial,sans-serif;font-size:13px;background:#F4F4F4}
   <div class="topbar">
     <div>
       <div class="tbt" id="page-title">GS1 Digital Link — Resumen general</div>
-      <div class="tbs">Datos actualizados al 30 de junio 2026</div>
+      <div class="tbs">Datos actualizados al 27 de julio 2026</div>
     </div>
     <div style="display:flex;align-items:center;gap:8px;">
       <span style="font-size:11px;background:#EEF0FF;color:#3D35A0;padding:4px 12px;border-radius:20px;font-weight:600;border:1px solid #C8CCFF;">
@@ -175,62 +175,84 @@ body{font-family:'Segoe UI',Arial,sans-serif;font-size:13px;background:#F4F4F4}
 <script>
 // ── DATA ──────────────────────────────────────────────────────
 var empresas = [
-  {nombre:"3102958410 SRL - BLANCA FRESCURA",          etapa:"potencial",  depto:"Servicio al cliente", cat:"SIN CLASIFICAR",  fecha:null},
-  {nombre:"SILVIA TREJOS GARCIA",                      etapa:"seguimiento",depto:"Servicio al cliente", cat:"CATEGORIA 5",    fecha:null},
-  {nombre:"GARRO SIERRA GS SA - PERFORM",              etapa:"potencial",  depto:"Servicio al cliente", cat:"SIN CLASIFICAR",  fecha:null},
-  {nombre:"ROMA PRINCE SA",                            etapa:"creado",     depto:"Proyectos",           cat:"CATEGORIA 20",   fecha:"19 may 2026"},
-  {nombre:"ANDREA DE LOS ANGELES VEGA MORALES",        etapa:"creado",     depto:"Proyectos",           cat:"CATEGORIA 1",    fecha:"29 may 2026"},
-  {nombre:"MANY SA",                                   etapa:"seguimiento",depto:"Servicio al cliente", cat:"CATEGORIA 3",    fecha:null},
-  {nombre:"Alvaro Jose Amador Vargas",                 etapa:"potencial",  depto:"Servicio al cliente", cat:"SIN CLASIFICAR",  fecha:null},
-  {nombre:"WASTON Y ROBLES SRL",                       etapa:"creado",     depto:"Proyectos",           cat:"CATEGORIA 2",    fecha:"22 may 2026"},
-  {nombre:"3-102-954554 SRL",                          etapa:"creado",     depto:"Proyectos",           cat:"CATEGORIA 1",    fecha:"22 may 2026"},
-  {nombre:"ENVASES COMERCIALES ENVASA SA",             etapa:"seguimiento",depto:"Servicio al cliente", cat:"CATEGORIA 20",   fecha:null},
-  {nombre:"ESPARTACOCR SA",                            etapa:"creado",     depto:"Proyectos",           cat:"CATEGORIA 11",   fecha:"22 may 2026"},
-  {nombre:"EXPOGREEN SEA AND LAND SA",                 etapa:"creado",     depto:"Proyectos",           cat:"CATEGORIA 6",    fecha:"19 may 2026"},
-  {nombre:"ALSERRO SA",                                etapa:"seguimiento",depto:"Servicio al cliente", cat:"CATEGORIA 17",   fecha:null},
-  {nombre:"CP CIENCIAS PECUARIAS SA",                  etapa:"seguimiento",depto:"Servicio al cliente", cat:"CATEGORIA 19",   fecha:null},
-  {nombre:"COOPERATIVA NACIONAL DE PRODUCTORES DE SAL RL",etapa:"seguimiento",depto:"Servicio al cliente",cat:"CATEGORIA 20",fecha:null},
-  {nombre:"TRISAN SA",                                 etapa:"seguimiento",depto:"Servicio al cliente", cat:"CATEGORIA 20",   fecha:null},
-  {nombre:"AUTOMERCADO",                               etapa:"creado",     depto:"Proyectos",           cat:"CATEGORIA 20",   fecha:"11 mar 2026"},
-  {nombre:"PROSALUD",                                  etapa:"potencial",  depto:"Comercial",           cat:"CATEGORIA 20",   fecha:null},
-  {nombre:"HEINEKEN",                                  etapa:"potencial",  depto:"Comercial",           cat:"CATEGORIA 20",   fecha:null},
-  {nombre:"POZUELO",                                   etapa:"potencial",  depto:"Comercial",           cat:"CATEGORIA 20",   fecha:null},
-  {nombre:"WALMART",                                   etapa:"seguimiento",depto:"Proyectos",           cat:"CATEGORIA 20",   fecha:null},
-  {nombre:"DOS PINOS",                                 etapa:"seguimiento",depto:"Comercial",           cat:"CATEGORIA 20",   fecha:null},
-  {nombre:"EAGLE",                                     etapa:"potencial",  depto:"Comercial",           cat:"CATEGORIA 20",   fecha:null},
-  {nombre:"HEALTHICAL SA",                              etapa:"potencial",  depto:"Comercial",           cat:"CATEGORIA 20",   fecha:null},
-  {nombre:"3102949054 SRL",                            etapa:"creado",     depto:"Proyectos",           cat:"CATEGORIA 1",    fecha:"29 may 2026"},
-  {nombre:"BRENTS BREWS SA",                           etapa:"creado",     depto:"Proyectos",           cat:"CATEGORIA 6",    fecha:"10 jun 2026"},
-  {nombre:"INDUSTRIAS DE HUEVO INNOVO SA",             etapa:"creado",     depto:"Proyectos",           cat:"CATEGORIA 19",   fecha:"10 jun 2026"},
-  {nombre:"FERTILIZANTES DEL SUR SA",                  etapa:"creado",     depto:"Proyectos",           cat:"CATEGORIA 8",    fecha:"10 jun 2026"},
-  {nombre:"YASLIN VANESSA PENA WILLIAMS",              etapa:"creado",     depto:"Proyectos",           cat:"CATEGORIA 2",    fecha:"10 jun 2026"},
-  {nombre:"SC INNOPRO SA",                             etapa:"creado",     depto:"Proyectos",           cat:"CATEGORIA 1",    fecha:"15 jun 2026"},
-  {nombre:"TRANSPORTES DROUILLY SA",                   etapa:"creado",     depto:"Proyectos",           cat:"CATEGORIA 10",   fecha:"15 jun 2026"},
-  {nombre:"SILVIA LORENA ROMERO CENTENO",              etapa:"creado",     depto:"Proyectos",           cat:"CATEGORIA 2",    fecha:"15 jun 2026"},
-  {nombre:"DISTRIBUIDORA CONSTRUMARCA JE SA",          etapa:"creado",     depto:"Proyectos",           cat:"CATEGORIA 7",    fecha:"15 jun 2026"},
-  {nombre:"CINDY TATIANA ELIZONDO RODRIGUEZ",          etapa:"creado",     depto:"Proyectos",           cat:"CATEGORIA 6",    fecha:"15 jun 2026"},
-  {nombre:"LILIANA BELGRAVE SOTO",                     etapa:"creado",     depto:"Proyectos",           cat:"CATEGORIA 2",    fecha:"15 jun 2026"},
-  {nombre:"COMADRES SRL",                              etapa:"creado",     depto:"Proyectos",           cat:"CATEGORIA 1",    fecha:"15 jun 2026"},
-  {nombre:"LUIS MANRIQUE LEON LEITON",                 etapa:"creado",     depto:"Proyectos",           cat:"CATEGORIA 2",    fecha:"15 jun 2026"},
-  {nombre:"DIENGO DE COSTA RICA",                      etapa:"creado",     depto:"Proyectos",           cat:"CATEGORIA 5",    fecha:"15 jun 2026"},
-  {nombre:"TOBIAS MORA CHAVES LTDA",                   etapa:"seguimiento",depto:"Servicio al cliente", cat:"CATEGORIA 5",    fecha:null},
-  {nombre:"EXSUS MEDICA SA",                           etapa:"potencial",  depto:"Servicio al cliente", cat:"SIN CLASIFICAR",  fecha:null},
-  {nombre:"INDUSTRIA DE SALSAS Y PIMIENTA LA UNICA SA",etapa:"seguimiento",depto:"Servicio al cliente", cat:"CATEGORIA 8",    fecha:null},
-  {nombre:"LIENZO INFINITO SA",                        etapa:"potencial",  depto:"\u2014",                   cat:"SIN CLASIFICAR",  fecha:null},
-  {nombre:"MULTILINEAS VISAN SA",                      etapa:"creado",     depto:"Proyectos",           cat:"CATEGORIA 10",   fecha:"23 jun 2026"},
-  {nombre:"KEILOR FABIAN SALAZAR SERRANO",             etapa:"creado",     depto:"Proyectos",           cat:"CATEGORIA 1",    fecha:"17 jun 2026"},
-  {nombre:"COMPANIA VETERINARIA DE IMPORTACIONES VETIM SA",etapa:"creado", depto:"Proyectos",           cat:"CATEGORIA 20",   fecha:"26 jun 2026"},
-  {nombre:"ANA LETICIA NUNEZ SANCHO",                  etapa:"creado",     depto:"Proyectos",           cat:"CATEGORIA 5",    fecha:"18 jun 2026"},
-  {nombre:"GRUPO AGAVE SRL",                            etapa:"creado",     depto:"Proyectos",           cat:"CATEGORIA 10",   fecha:"18 jun 2026"},
-  {nombre:"WILBERTH ESTEBAN JIMENEZ CREED",            etapa:"creado",     depto:"Proyectos",           cat:"CATEGORIA 1",    fecha:"22 jun 2026"},
-  {nombre:"GRUPO ERLO SA",                              etapa:"creado",     depto:"Proyectos",           cat:"CATEGORIA 12",   fecha:"22 jun 2026"},
-  {nombre:"LUFFACLEAN SRL",                              etapa:"creado",     depto:"Proyectos",           cat:"CATEGORIA 5",    fecha:"22 jun 2026"},
-  {nombre:"MASALA ALIMENTOS Y BEBIDAS LTDA",            etapa:"creado",     depto:"Proyectos",           cat:"CATEGORIA 1",    fecha:"23 jun 2026"},
-  {nombre:"QCCM REPRESENTACIONES INTERNACIONALES LTDA",etapa:"creado",     depto:"Proyectos",           cat:"CATEGORIA 4",     fecha:"18 jun 2026"},
-  {nombre:"Roberto Giron",                              etapa:"potencial",  depto:"Servicio al cliente", cat:"SIN CLASIFICAR",  fecha:null},
-  {nombre:"INVERSIONES DANIVAR Y SANCHEZ LTDA",         etapa:"potencial",  depto:"Servicio al cliente", cat:"SIN CLASIFICAR",  fecha:null},
-  {nombre:"Jordan 1 Treece",                            etapa:"potencial",  depto:"Servicio al cliente", cat:"SIN CLASIFICAR",  fecha:null},
-  {nombre:"Edwin Gonzalez Rojas",                       etapa:"potencial",  depto:"Servicio al cliente", cat:"SIN CLASIFICAR",  fecha:null}
+  {nombre:"AUTOMERCADO", etapa:"creado", depto:"Proyectos", cat:"CATEGORIA 20", fecha:"11 mar 2026"},
+  {nombre:"ROMA PRINCE SA", etapa:"creado", depto:"Proyectos", cat:"CATEGORIA 20", fecha:"19 may 2026"},
+  {nombre:"EXPOGREEN SEA AND LAND SA", etapa:"creado", depto:"Proyectos", cat:"CATEGORIA 6", fecha:"19 may 2026"},
+  {nombre:"WASTON Y ROBLES SRL", etapa:"creado", depto:"Proyectos", cat:"CATEGORIA 2", fecha:"22 may 2026"},
+  {nombre:"3102954554 SRL", etapa:"creado", depto:"Proyectos", cat:"CATEGORIA 1", fecha:"22 may 2026"},
+  {nombre:"ESPARTACOCR SA", etapa:"creado", depto:"Proyectos", cat:"CATEGORIA 11", fecha:"22 may 2026"},
+  {nombre:"ANDREA DE LOS ANGELES VEGA MORALES", etapa:"creado", depto:"Proyectos", cat:"CATEGORIA 1", fecha:"29 may 2026"},
+  {nombre:"3102949054 SRL", etapa:"creado", depto:"Proyectos", cat:"CATEGORIA 1", fecha:"29 may 2026"},
+  {nombre:"BRENTS BREWS SA", etapa:"creado", depto:"Proyectos", cat:"CATEGORIA 6", fecha:"10 jun 2026"},
+  {nombre:"INDUSTRIAS DE HUEVO INNOVO SA", etapa:"creado", depto:"Proyectos", cat:"CATEGORIA 19", fecha:"10 jun 2026"},
+  {nombre:"FERTILIZANTES DEL SUR SA", etapa:"creado", depto:"Proyectos", cat:"CATEGORIA 8", fecha:"10 jun 2026"},
+  {nombre:"YASLIN VANESSA PE\u00d1A WILLIAMS", etapa:"creado", depto:"Proyectos", cat:"CATEGORIA 2", fecha:"10 jun 2026"},
+  {nombre:"SC INNOPRO SA", etapa:"creado", depto:"Proyectos", cat:"CATEGORIA 1", fecha:"15 jun 2026"},
+  {nombre:"TRANSPORTES DROUILLY SA", etapa:"creado", depto:"Proyectos", cat:"CATEGORIA 10", fecha:"15 jun 2026"},
+  {nombre:"SILVIA LORENA ROMERO CENTENO", etapa:"creado", depto:"Proyectos", cat:"CATEGORIA 2", fecha:"15 jun 2026"},
+  {nombre:"DISTRIBUIDORA CONSTRUMARCA JE SA", etapa:"creado", depto:"Proyectos", cat:"CATEGORIA 7", fecha:"15 jun 2026"},
+  {nombre:"CINDY TATIANA ELIZONDO RODRIGUEZ", etapa:"creado", depto:"Proyectos", cat:"CATEGORIA 6", fecha:"15 jun 2026"},
+  {nombre:"LILIANA BELGRAVE SOTO", etapa:"creado", depto:"Proyectos", cat:"CATEGORIA 2", fecha:"15 jun 2026"},
+  {nombre:"COMADRES SRL", etapa:"creado", depto:"Proyectos", cat:"CATEGORIA 1", fecha:"15 jun 2026"},
+  {nombre:"LUIS MANRIQUE LEON LEITON", etapa:"creado", depto:"Proyectos", cat:"CATEGORIA 2", fecha:"15 jun 2026"},
+  {nombre:"DIENGO DE COSTA RICA", etapa:"creado", depto:"Proyectos", cat:"CATEGORIA 5", fecha:"15 jun 2026"},
+  {nombre:"KEILOR FABIAN SALAZAR SERRANO", etapa:"creado", depto:"Proyectos", cat:"CATEGORIA 1", fecha:"17 jun 2026"},
+  {nombre:"ANA LETICIA NU\u00d1EZ SANCHO", etapa:"creado", depto:"Proyectos", cat:"CATEGORIA 5", fecha:"18 jun 2026"},
+  {nombre:"GRUPO AGAVE SRL", etapa:"creado", depto:"Proyectos", cat:"CATEGORIA 10", fecha:"18 jun 2026"},
+  {nombre:"QCCM REPRESENTACIONES INTERNACIONALES LTDA", etapa:"creado", depto:"Proyectos", cat:"CATEGORIA 4", fecha:"18 jun 2026"},
+  {nombre:"WILBERTH ESTEBAN JIMENEZ CREED", etapa:"creado", depto:"Proyectos", cat:"CATEGORIA 1", fecha:"22 jun 2026"},
+  {nombre:"GRUPO ERLO SA", etapa:"creado", depto:"Proyectos", cat:"CATEGORIA 12", fecha:"22 jun 2026"},
+  {nombre:"LUFFACLEAN SRL", etapa:"creado", depto:"Proyectos", cat:"CATEGORIA 5", fecha:"22 jun 2026"},
+  {nombre:"MULTILINEAS VISAN SA", etapa:"creado", depto:"Proyectos", cat:"CATEGORIA 10", fecha:"23 jun 2026"},
+  {nombre:"MASALA ALIMENTOS Y BEBIDAS LTDA", etapa:"creado", depto:"Proyectos", cat:"CATEGORIA 1", fecha:"23 jun 2026"},
+  {nombre:"COMPANIA VETERINARIA DE IMPORTACIONES VETIM SA", etapa:"creado", depto:"Proyectos", cat:"CATEGORIA 20", fecha:"26 jun 2026"},
+  {nombre:"HEALTHICAL SA", etapa:"creado", depto:"Proyectos", cat:"CATEGORIA 20", fecha:"30 jun 2026"},
+  {nombre:"PRODUCTOS SALAZAR ZU\u00d1IGA SRL", etapa:"creado", depto:"Proyectos", cat:"SIN CLASIFICAR", fecha:"1 jul 2026"},
+  {nombre:"3-101-682458 SA", etapa:"creado", depto:"Proyectos", cat:"SIN CLASIFICAR", fecha:"1 jul 2026"},
+  {nombre:"INDUSTRIAS MAFAM SA", etapa:"creado", depto:"Proyectos", cat:"SIN CLASIFICAR", fecha:"2 jul 2026"},
+  {nombre:"JAVIER ANTONIO GARBANZO GARITA", etapa:"creado", depto:"Proyectos", cat:"SIN CLASIFICAR", fecha:"8 jul 2026"},
+  {nombre:"MADERAS CULTIVADAS DE COSTA RICA MCC SA", etapa:"creado", depto:"Proyectos", cat:"SIN CLASIFICAR", fecha:"9 jul 2026"},
+  {nombre:"KETOKE DONDE FLORIA SRL", etapa:"creado", depto:"Proyectos", cat:"SIN CLASIFICAR", fecha:"16 jul 2026"},
+  {nombre:"BAJO DEL RIO SA", etapa:"creado", depto:"Proyectos", cat:"SIN CLASIFICAR", fecha:"16 jul 2026"},
+  {nombre:"TURRONES DE COSTA RICA SA", etapa:"creado", depto:"Proyectos", cat:"SIN CLASIFICAR", fecha:"16 jul 2026"},
+  {nombre:"KUNAKINI SRL", etapa:"creado", depto:"Proyectos", cat:"SIN CLASIFICAR", fecha:"16 jul 2026"},
+  {nombre:"CORPORACION EL SECRETO DEL CARIBE SA", etapa:"creado", depto:"Proyectos", cat:"SIN CLASIFICAR", fecha:"16 jul 2026"},
+  {nombre:"PRODUCTOS TEXTILES Y ACABADOS REYCO SA", etapa:"creado", depto:"Proyectos", cat:"SIN CLASIFICAR", fecha:"17 jul 2026"},
+  {nombre:"SOLUCIONES AUTOMOTRICES LAPA GREEN SRL", etapa:"creado", depto:"Proyectos", cat:"SIN CLASIFICAR", fecha:"17 jul 2026"},
+  {nombre:"DOK APPETIT COSTA RICA SRL", etapa:"creado", depto:"Proyectos", cat:"CATEGORIA 4", fecha:"20 jul 2026"},
+  {nombre:"GRUPO GG SRL", etapa:"creado", depto:"Proyectos", cat:"SIN CLASIFICAR", fecha:"20 jul 2026"},
+  {nombre:"3-102-953237 SRL", etapa:"creado", depto:"Proyectos", cat:"SIN CLASIFICAR", fecha:"20 jul 2026"},
+  {nombre:"3102935491 SRL", etapa:"creado", depto:"Proyectos", cat:"SIN CLASIFICAR", fecha:"20 jul 2026"},
+  {nombre:"INDUSTRIAS DE MAIZ SA", etapa:"creado", depto:"Proyectos", cat:"SIN CLASIFICAR", fecha:"23 jul 2026"},
+  {nombre:"LAMINAK COMERCIAL CR SA", etapa:"creado", depto:"Proyectos", cat:"CATEGORIA 2", fecha:"24 jul 2026"},
+  {nombre:"MIEL DORADA DE LA BAJURA DE SANTA CRUZ SA", etapa:"creado", depto:"Proyectos", cat:"SIN CLASIFICAR", fecha:"24 jul 2026"},
+  {nombre:"GRACE ELENA SOLANO QUIROS", etapa:"creado", depto:"Proyectos", cat:"SIN CLASIFICAR", fecha:"24 jul 2026"},
+  {nombre:"PITALIA SA", etapa:"creado", depto:"Proyectos", cat:"SIN CLASIFICAR", fecha:"24 jul 2026"},
+  {nombre:"GRUPO INDUSTRIAL PAMA SA", etapa:"creado", depto:"Proyectos", cat:"SIN CLASIFICAR", fecha:"27 jul 2026"},
+  {nombre:"3102958410 SRL - BLANCA FRESCURA", etapa:"potencial", depto:"Servicio al cliente", cat:"SIN CLASIFICAR", fecha:null},
+  {nombre:"SILVIA TREJOS GARCIA", etapa:"seguimiento", depto:"Servicio al cliente", cat:"CATEGORIA 5", fecha:null},
+  {nombre:"GARRO SIERRA GS SA - PERFORM", etapa:"potencial", depto:"Servicio al cliente", cat:"SIN CLASIFICAR", fecha:null},
+  {nombre:"MANY SA", etapa:"seguimiento", depto:"Servicio al cliente", cat:"CATEGORIA 3", fecha:null},
+  {nombre:"Alvaro Jose Amador Vargas", etapa:"potencial", depto:"Servicio al cliente", cat:"SIN CLASIFICAR", fecha:null},
+  {nombre:"ENVASES COMERCIALES ENVASA SA", etapa:"seguimiento", depto:"Servicio al cliente", cat:"CATEGORIA 20", fecha:null},
+  {nombre:"ALSERRO SA", etapa:"seguimiento", depto:"Servicio al cliente", cat:"CATEGORIA 17", fecha:null},
+  {nombre:"CP CIENCIAS PECUARIAS SA", etapa:"seguimiento", depto:"Servicio al cliente", cat:"CATEGORIA 19", fecha:null},
+  {nombre:"COOPERATIVA NACIONAL DE PRODUCTORES DE SAL RL", etapa:"seguimiento", depto:"Servicio al cliente", cat:"CATEGORIA 20", fecha:null},
+  {nombre:"TRISAN SA", etapa:"seguimiento", depto:"Servicio al cliente", cat:"CATEGORIA 20", fecha:null},
+  {nombre:"PROSALUD", etapa:"potencial", depto:"Comercial", cat:"CATEGORIA 20", fecha:null},
+  {nombre:"HEINEKEN", etapa:"potencial", depto:"Comercial", cat:"CATEGORIA 20", fecha:null},
+  {nombre:"POZUELO", etapa:"potencial", depto:"Comercial", cat:"CATEGORIA 20", fecha:null},
+  {nombre:"WALMART", etapa:"seguimiento", depto:"Proyectos", cat:"CATEGORIA 20", fecha:null},
+  {nombre:"DOS PINOS", etapa:"seguimiento", depto:"Comercial", cat:"CATEGORIA 20", fecha:null},
+  {nombre:"EAGLE", etapa:"potencial", depto:"Comercial", cat:"CATEGORIA 20", fecha:null},
+  {nombre:"TOBIAS MORA CHAVES LTDA", etapa:"potencial", depto:"Servicio al cliente", cat:"CATEGORIA 5", fecha:null},
+  {nombre:"EXSUS MEDICA SA", etapa:"potencial", depto:"Servicio al cliente", cat:"SIN CLASIFICAR", fecha:null},
+  {nombre:"INDUSTRIA DE SALSAS Y PIMIENTA LA UNICA SA", etapa:"seguimiento", depto:"Servicio al cliente", cat:"CATEGORIA 8", fecha:null},
+  {nombre:"LIENZO INFINITO SA", etapa:"potencial", depto:"Servicio al cliente", cat:"SIN CLASIFICAR", fecha:null},
+  {nombre:"Roberto Giron", etapa:"potencial", depto:"Servicio al cliente", cat:"SIN CLASIFICAR", fecha:null},
+  {nombre:"INVERSIONES DANIVAR Y SANCHEZ LTDA", etapa:"potencial", depto:"Servicio al cliente", cat:"SIN CLASIFICAR", fecha:null},
+  {nombre:"Jordan 1 Treece", etapa:"potencial", depto:"Servicio al cliente", cat:"SIN CLASIFICAR", fecha:null},
+  {nombre:"Edwin Gonz\u00e1lez Rojas", etapa:"potencial", depto:"Servicio al cliente", cat:"SIN CLASIFICAR", fecha:null}
 ];
 var TOTAL_ACTIVAS_ORG = 2343;
 
@@ -278,9 +300,9 @@ function render(view) {
 function viewResumen() {
   var donut = (function(){
     var stages = [
-      {label:"Potencial",        count:14, pct:25, color:"#F26522", bg:"rgba(242,101,34,.13)", border:"#F26522"},
-      {label:"En seguimiento",   count:11, pct:20, color:"#2980B9", bg:"rgba(41,128,185,.13)", border:"#2980B9"},
-      {label:"Cliente creado DL",count:31, pct:55, color:"#27AE60", bg:"rgba(39,174,96,.16)",  border:"#27AE60"}
+      {label:"Potencial",        count:14, pct:18, color:"#F26522", bg:"rgba(242,101,34,.13)", border:"#F26522"},
+      {label:"En seguimiento",   count:10, pct:13, color:"#2980B9", bg:"rgba(41,128,185,.13)", border:"#2980B9"},
+      {label:"Cliente creado DL",count:54, pct:69, color:"#27AE60", bg:"rgba(39,174,96,.16)",  border:"#27AE60"}
     ];
     var W = 260, rowH = 56, gap = 4;
     var fullH = stages.length * rowH + (stages.length - 1) * gap + 36;
@@ -318,26 +340,26 @@ function viewResumen() {
       + '</div>';
   })();
 
-  var roadmap = '<div class="card"><div class="ch"><i class="ti ti-chart-bar cic"></i><span class="ctit">Activaciones por mes &mdash; Cliente creado DL (mar&ndash;dic 2026)</span></div><div style="position:relative;height:220px;"><canvas id="c-roadmap" role="img" aria-label="Activaciones por mes de cliente creado DL"></canvas></div><div style="margin-top:10px;padding-top:8px;border-top:1px solid #F4F4F4;font-size:10px;color:#888;">Acumulado al mes actual: <strong style="color:#003C71;">31 empresas activas</strong>. Los meses sin activaciones aparecen en 0.</div></div>';
+  var roadmap = '<div class="card"><div class="ch"><i class="ti ti-chart-bar cic"></i><span class="ctit">Activaciones por mes &mdash; Cliente creado DL (mar&ndash;dic 2026)</span></div><div style="position:relative;height:220px;"><canvas id="c-roadmap" role="img" aria-label="Activaciones por mes de cliente creado DL"></canvas></div><div style="margin-top:10px;padding-top:8px;border-top:1px solid #F4F4F4;font-size:10px;color:#888;">Acumulado al mes actual: <strong style="color:#003C71;">54 empresas activas</strong>. Los meses sin activaciones aparecen en 0.</div></div>';
 
   var catData = [
-    {cat:"Cat. 1",        pot:0, seg:0, cre:8, total:8},
-    {cat:"Cat. 2",        pot:0, seg:0, cre:5, total:5},
-    {cat:"Cat. 3",        pot:0, seg:1, cre:0, total:1},
-    {cat:"Cat. 4",        pot:0, seg:0, cre:1, total:1},
-    {cat:"Cat. 5",        pot:0, seg:2, cre:3, total:5},
-    {cat:"Cat. 6",        pot:0, seg:0, cre:3, total:3},
-    {cat:"Cat. 7",        pot:0, seg:0, cre:1, total:1},
-    {cat:"Cat. 8",        pot:0, seg:1, cre:1, total:2},
-    {cat:"Cat. 10",       pot:0, seg:0, cre:3, total:3},
-    {cat:"Cat. 11",       pot:0, seg:0, cre:1, total:1},
-    {cat:"Cat. 12",       pot:0, seg:0, cre:1, total:1},
-    {cat:"Cat. 17",       pot:0, seg:1, cre:0, total:1},
-    {cat:"Cat. 19",       pot:0, seg:1, cre:1, total:2},
-    {cat:"Cat. 20",       pot:5, seg:5, cre:3, total:13},
-    {cat:"Sin clasificar",pot:9, seg:0, cre:0, total:9}
+    {cat:"Cat. 1",        pot:0, seg:0, cre:8,  total:8},
+    {cat:"Cat. 2",        pot:0, seg:0, cre:6,  total:6},
+    {cat:"Cat. 3",        pot:0, seg:1, cre:0,  total:1},
+    {cat:"Cat. 4",        pot:0, seg:0, cre:2,  total:2},
+    {cat:"Cat. 5",        pot:1, seg:1, cre:3,  total:5},
+    {cat:"Cat. 6",        pot:0, seg:0, cre:3,  total:3},
+    {cat:"Cat. 7",        pot:0, seg:0, cre:1,  total:1},
+    {cat:"Cat. 8",        pot:0, seg:1, cre:1,  total:2},
+    {cat:"Cat. 10",       pot:0, seg:0, cre:3,  total:3},
+    {cat:"Cat. 11",       pot:0, seg:0, cre:1,  total:1},
+    {cat:"Cat. 12",       pot:0, seg:0, cre:1,  total:1},
+    {cat:"Cat. 17",       pot:0, seg:1, cre:0,  total:1},
+    {cat:"Cat. 19",       pot:0, seg:1, cre:1,  total:2},
+    {cat:"Cat. 20",       pot:4, seg:5, cre:4,  total:13},
+    {cat:"Sin clasificar",pot:9, seg:0, cre:20, total:29}
   ];
-  var maxT = 13;
+  var maxT = 29;
   var catRows = catData.map(function(r,i){
     var bg = i%2===0 ? "#fff" : "#FAFAFA";
     var potCell = r.pot>0 ? '<span style="background:#FEF0E8;color:#B84C18;font-size:10px;padding:1px 7px;border-radius:10px;font-weight:600;">'+r.pot+'</span>' : '<span style="color:#D0D0D0;">-</span>';
@@ -379,18 +401,18 @@ function viewResumen() {
   return '<div class="kg">'
     + '<div class="kp ko">'
     +   '<div class="kic"><i class="ti ti-building"></i></div>'
-    +   '<div class="kv">56</div>'
+    +   '<div class="kv">78</div>'
     +   '<div class="kla">Empresas en pipeline</div>'
     +   '<div class="ksb">Total gestionadas</div>'
     + '</div>'
     + '<div class="kp" style="border-top-color:#8E44AD;">'
     +   '<div class="kic" style="color:#8E44AD;"><i class="ti ti-percentage"></i></div>'
-    +   '<div class="kv" style="font-size:22px;">1.32%</div>'
+    +   '<div class="kv" style="font-size:22px;">2.30%</div>'
     +   '<div class="kla" style="display:flex;align-items:center;">Masificacion'
     +     '<span class="tip-wrap"><i class="tip-icon ti ti-info-circle"></i>'
     +     '<span class="tip-box">Base de 2 343 afiliados activos que cerraron contrato en 2025.</span></span>'
     +   '</div>'
-    +   '<div class="ksb">31 de 2 343 empresas activas</div>'
+    +   '<div class="ksb">54 de 2 343 empresas activas</div>'
     + '</div>'
     + '<div class="kp" style="border-top-color:#16A085;">'
     +   '<div class="kic" style="color:#16A085;"><i class="ti ti-microscope"></i></div>'
@@ -406,7 +428,7 @@ function viewResumen() {
     + '</div>'
     + '</div>'
     + '<div class="grid2">' + donut
-    + '<div class="card">' + '<div class="ch"><i class="ti ti-bulb cic"></i><span class="ctit">Oportunidades identificadas</span></div>' + '<div class="grid2" style="gap:10px;">' + '<div class="opp-card" style="background:#D4EFDF;border-color:#A9DFBF;"><div class="opp-title" style="color:#1A6B33;">&#9650; Activos en GS1 Digital Link</div><div class="opp-num" style="color:#1A6B33;">31</div><div class="opp-desc" style="color:#1A6B33;">El acumulado salto de 8 a 31 empresas en junio (x3.9), el mes de mayor activacion del servicio hasta la fecha. Esta aceleracion confirma que el modelo de impulso esta encontrando tracion real en el segmento correcto.</div></div>' + '<div class="opp-card" style="background:#D6EAF8;border-color:#AED6F1;"><div class="opp-title" style="color:#1A5276;">Proximas activaciones</div><div class="opp-num">11</div><div class="opp-desc">Empresas en seguimiento activo, base mas reducida que el mes anterior porque la mayoria ya migro a creado DL. Foco actual: cerrar este grupo y sumar nuevos prospectos via impulsacion.</div></div>' + '<div class="opp-card" style="background:#EEF0FF;border-color:#C8CCFF;"><div class="opp-title" style="color:#3D35A0;">&#9650; Grandes cuentas tractoras (Cat. 20)</div><div class="opp-num" style="color:#3D35A0;">13</div><div class="opp-desc" style="color:#3D35A0;">13 empresas de categoria alta en pipeline, pero solo 3 con DL activo (23%) — muy por debajo de la conversion PYME. Esta brecha es la principal oportunidad sin explotar: su adopcion arrastra cadenas completas de proveedores.</div></div>' + '<div class="opp-card" style="background:#FFF8E7;border-color:#F5E4A0;"><div class="opp-title" style="color:#7A4D00;">&#9650; Segmento PYME (Cat. 1-10)</div><div class="opp-num" style="color:#7A4D00;">29</div><div class="opp-desc" style="color:#7A4D00;">29 PYMES en pipeline (52% del total), 25 con DL creado — 86% de conversion, la tasa mas alta de toda la base y motor del salto de junio. Replicar este modelo de activacion masiva en Cat. 20 es la palanca con mayor potencial de impacto.</div></div>' + '</div></div>'
+    + '<div class="card">' + '<div class="ch"><i class="ti ti-bulb cic"></i><span class="ctit">Oportunidades identificadas</span></div>' + '<div class="grid2" style="gap:10px;">' + '<div class="opp-card" style="background:#D4EFDF;border-color:#A9DFBF;"><div class="opp-title" style="color:#1A6B33;">&#9650; Activos en GS1 Digital Link</div><div class="opp-num" style="color:#1A6B33;">54</div><div class="opp-desc" style="color:#1A6B33;">El acumulado paso de 31 a 54 empresas activas entre junio y julio (+74%), con 24 activaciones en junio y 22 en julio — el ritmo sostenido mas alto del servicio hasta la fecha. El tiempo entre activaciones bajo de 6 a cerca de 1 dia.</div></div>' + '<div class="opp-card" style="background:#D6EAF8;border-color:#AED6F1;"><div class="opp-title" style="color:#1A5276;">Proximas activaciones</div><div class="opp-num">10</div><div class="opp-desc">Empresas en seguimiento activo, base estable respecto al mes anterior (11) mientras la mayoria migra a creado DL. Foco actual: cerrar este grupo y sumar nuevos prospectos via impulsacion.</div></div>' + '<div class="opp-card" style="background:#EEF0FF;border-color:#C8CCFF;"><div class="opp-title" style="color:#3D35A0;">&#9650; Grandes cuentas tractoras (Cat. 20)</div><div class="opp-num" style="color:#3D35A0;">13</div><div class="opp-desc" style="color:#3D35A0;">13 empresas de categoria alta en pipeline, con 4 con DL activo (31%) — sigue por debajo de la conversion PYME, aunque mejora frente al mes anterior (23%). Esta brecha sigue siendo la principal oportunidad sin explotar: su adopcion arrastra cadenas completas de proveedores.</div></div>' + '<div class="opp-card" style="background:#FFF8E7;border-color:#F5E4A0;"><div class="opp-title" style="color:#7A4D00;">&#9650; Segmento PYME (Cat. 1-10)</div><div class="opp-num" style="color:#7A4D00;">31</div><div class="opp-desc" style="color:#7A4D00;">31 PYMES en pipeline (40% del total), 27 con DL creado — 87% de conversion, la tasa mas alta de toda la base y motor del crecimiento de junio-julio. Replicar este modelo de activacion masiva en Cat. 20 sigue siendo la palanca con mayor potencial de impacto.</div></div>' + '</div></div>'
     + '</div>'
     + roadmap
     + catTable;
@@ -419,10 +441,10 @@ function viewPipeline() {
     <div class="ch"><i class="ti ti-funnel cic"></i><span class="ctit">Funnel de adopción GS1 Digital Link</span></div>
     <div class="funnel-wrap">
       ${[
-        {l:"Empresas en pipeline",n:56,p:100,c:"rgba(0,60,113,.18)",bc:"#003C71"},
-        {l:"Con categoría asignada",n:47,p:84,c:"rgba(41,128,185,.18)",bc:"#2980B9"},
-        {l:"En seguimiento activo",n:11,p:20,c:"rgba(83,74,183,.18)",bc:"#534AB7"},
-        {l:"Cliente creado DL",n:31,p:55,c:"rgba(39,174,96,.25)",bc:"#27AE60"}
+        {l:"Empresas en pipeline",n:78,p:100,c:"rgba(0,60,113,.18)",bc:"#003C71"},
+        {l:"Con categoría asignada",n:49,p:63,c:"rgba(41,128,185,.18)",bc:"#2980B9"},
+        {l:"En seguimiento activo",n:10,p:13,c:"rgba(83,74,183,.18)",bc:"#534AB7"},
+        {l:"Cliente creado DL",n:54,p:69,c:"rgba(39,174,96,.25)",bc:"#27AE60"}
       ].map(function(f){ return `
       <div class="funnel-row">
         <div class="funnel-lbl">${f.l}</div>
@@ -435,7 +457,7 @@ function viewPipeline() {
       </div>`; }).join("")}
     </div>
     <div style="margin-top:12px;padding-top:10px;border-top:1px solid #F4F4F4;font-size:11px;color:#888;">
-      <i class="ti ti-info-circle" style="vertical-align:-2px;margin-right:4px;"></i>31 empresas con acceso creado DL: 1 en marzo, 7 en mayo y 23 nuevas en junio 2026.
+      <i class="ti ti-info-circle" style="vertical-align:-2px;margin-right:4px;"></i>54 empresas con acceso creado DL: 1 en marzo, 7 en mayo, 24 en junio y 22 nuevas en julio 2026.
     </div>
   </div>
 
@@ -460,7 +482,7 @@ function viewPipeline() {
         <div class="tl-text"><strong>${a.fecha} —</strong> ${a.nombre} <span class="ba bcat">${a.cat.replace("CATEGORIA","Cat.")}</span></div>
       </div>`; }).join("")}
       <div style="margin-top:12px;padding:10px;background:#EAFAF1;border-radius:6px;font-size:11px;color:#1A6B33;">
-        <i class="ti ti-trending-up" style="vertical-align:-2px;margin-right:4px;"></i><strong>31 empresas</strong> con acceso DL creado — 23 activadas en junio 2026, el mes de mayor crecimiento del servicio.
+        <i class="ti ti-trending-up" style="vertical-align:-2px;margin-right:4px;"></i><strong>54 empresas</strong> con acceso DL creado — 24 activadas en junio 2026, el mes de mayor crecimiento del servicio, seguido de 22 en julio.
       </div>
     </div>
   </div>`;
@@ -493,8 +515,8 @@ function viewEmpresas(filter) {
     <div class="frow" id="emp-filters">
       <button class="fbtn ${filter==='all'?'on':''}" onclick="filterEmp('all',this)">Todas (${empresas.length})</button>
       <button class="fbtn ${filter==='potencial'?'on':''}" onclick="filterEmp('potencial',this)">Potencial (14)</button>
-      <button class="fbtn ${filter==='seguimiento'?'on':''}" onclick="filterEmp('seguimiento',this)">Seguimiento (11)</button>
-      <button class="fbtn ${filter==='creado'?'on':''}" onclick="filterEmp('creado',this)">Cliente creado DL (31)</button>
+      <button class="fbtn ${filter==='seguimiento'?'on':''}" onclick="filterEmp('seguimiento',this)">Seguimiento (10)</button>
+      <button class="fbtn ${filter==='creado'?'on':''}" onclick="filterEmp('creado',this)">Cliente creado DL (54)</button>
     </div>
     <div class="tsc">
       <table class="tbl">
@@ -535,10 +557,10 @@ function viewMasif() {
       <div class="ch"><i class="ti ti-rocket cic"></i><span class="ctit">Índice de activación</span></div>
       <div class="gauge-wrap">
         <div style="height:180px;width:180px;margin:0 auto;position:relative;">
-          <canvas id="c-gauge" role="img" aria-label="Índice de activación 25%"></canvas>
+          <canvas id="c-gauge" role="img" aria-label="Índice de activación 2%"></canvas>
           <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-40%);text-align:center;">
-            <div class="gauge-val">1.32%</div>
-            <div class="gauge-sub">21 de 2 343 activas</div>
+            <div class="gauge-val">2.30%</div>
+            <div class="gauge-sub">54 de 2 343 activas</div>
           </div>
         </div>
       </div>
@@ -547,10 +569,10 @@ function viewMasif() {
     <div class="card">
       <div class="ch"><i class="ti ti-target cic"></i><span class="ctit">Metas de masificación</span></div>
       ${[
-        {l:"Cliente creado DL",v:31,t:2343,c:"#27AE60"},
-        {l:"Con categoría asignada",v:47,t:56,c:"#2980B9"},
-        {l:"En seguimiento activo",v:11,t:56,c:"#534AB7"},
-        {l:"Masificación vs total org.",v:31,t:2343,c:"#F26522"}
+        {l:"Cliente creado DL",v:54,t:2343,c:"#27AE60"},
+        {l:"Con categoría asignada",v:49,t:78,c:"#2980B9"},
+        {l:"En seguimiento activo",v:10,t:78,c:"#534AB7"},
+        {l:"Masificación vs total org.",v:54,t:2343,c:"#F26522"}
       ].map(function(m){ return `
       <div style="margin-bottom:12px;">
         <div style="display:flex;justify-content:space-between;font-size:11px;margin-bottom:4px;">
@@ -831,10 +853,10 @@ function viewAnalitica() {
 function viewClientes() {
   return `
   <div class="kg">
-    <div class="kp ko"><div class="kic"><i class="ti ti-users"></i></div><div class="kv">17</div><div class="kla">Empresas gestionadas</div><div class="ksb">Serv. al cliente</div></div>
-    <div class="kp kgg"><div class="kic"><i class="ti ti-circle-check"></i></div><div class="kv">31</div><div class="kla">Cliente creado DL</div><div class="ksb">Acceso activo</div></div>
-    <div class="kp kn"><div class="kic"><i class="ti ti-message-circle"></i></div><div class="kv">11</div><div class="kla">En seguimiento activo</div></div>
-    <div class="kp krr"><div class="kic"><i class="ti ti-alert-triangle"></i></div><div class="kv">9</div><div class="kla">Sin clasificar</div><div class="ksb">Requieren atención</div></div>
+    <div class="kp ko"><div class="kic"><i class="ti ti-users"></i></div><div class="kv">18</div><div class="kla">Empresas gestionadas</div><div class="ksb">Serv. al cliente</div></div>
+    <div class="kp kgg"><div class="kic"><i class="ti ti-circle-check"></i></div><div class="kv">54</div><div class="kla">Cliente creado DL</div><div class="ksb">Acceso activo</div></div>
+    <div class="kp kn"><div class="kic"><i class="ti ti-message-circle"></i></div><div class="kv">10</div><div class="kla">En seguimiento activo</div></div>
+    <div class="kp krr"><div class="kic"><i class="ti ti-alert-triangle"></i></div><div class="kv">29</div><div class="kla">Sin clasificar</div><div class="ksb">Requieren atención</div></div>
   </div>
 
   <div class="grid2">
@@ -842,10 +864,10 @@ function viewClientes() {
       <div class="ch"><i class="ti ti-funnel cic"></i><span class="ctit">Funnel de servicio</span></div>
       <div class="funnel-wrap">
         ${[
-          {l:"Contactados inicialmente",n:56,p:100,c:"rgba(0,60,113,.15)",bc:"#003C71"},
-          {l:"Clasificados con categoría",n:47,p:84,c:"rgba(41,128,185,.18)",bc:"#2980B9"},
-          {l:"En seguimiento activo",n:11,p:20,c:"rgba(242,101,34,.2)",bc:"#F26522"},
-          {l:"Cliente creado DL",n:31,p:55,c:"rgba(39,174,96,.25)",bc:"#27AE60"}
+          {l:"Contactados inicialmente",n:78,p:100,c:"rgba(0,60,113,.15)",bc:"#003C71"},
+          {l:"Clasificados con categoría",n:49,p:63,c:"rgba(41,128,185,.18)",bc:"#2980B9"},
+          {l:"En seguimiento activo",n:10,p:13,c:"rgba(242,101,34,.2)",bc:"#F26522"},
+          {l:"Cliente creado DL",n:54,p:69,c:"rgba(39,174,96,.25)",bc:"#27AE60"}
         ].map(function(f){ return `
         <div class="funnel-row">
           <div class="funnel-lbl" style="width:180px;">${f.l}</div>
@@ -881,10 +903,10 @@ function viewClientes() {
 function viewMercadeo() {
   return `
   <div class="kg">
-    <div class="kp ko"><div class="kic"><i class="ti ti-speakerphone"></i></div><div class="kv">56</div><div class="kla">Empresas en pipeline</div></div>
-    <div class="kp kn"><div class="kic"><i class="ti ti-presentation"></i></div><div class="kv">6</div><div class="kla">Gestionadas por Comercial</div></div>
-    <div class="kp kgg"><div class="kic"><i class="ti ti-file-check"></i></div><div class="kv">31</div><div class="kla">Cliente creado DL</div></div>
-    <div class="kp krr"><div class="kic"><i class="ti ti-clock"></i></div><div class="kv">9</div><div class="kla">Sin clasificar</div></div>
+    <div class="kp ko"><div class="kic"><i class="ti ti-speakerphone"></i></div><div class="kv">78</div><div class="kla">Empresas en pipeline</div></div>
+    <div class="kp kn"><div class="kic"><i class="ti ti-presentation"></i></div><div class="kv">5</div><div class="kla">Gestionadas por Comercial</div></div>
+    <div class="kp kgg"><div class="kic"><i class="ti ti-file-check"></i></div><div class="kv">54</div><div class="kla">Cliente creado DL</div></div>
+    <div class="kp krr"><div class="kic"><i class="ti ti-clock"></i></div><div class="kv">29</div><div class="kla">Sin clasificar</div></div>
   </div>
 
   <div class="card">
@@ -903,7 +925,7 @@ function viewMercadeo() {
         {l:"Identificadas → Clasificadas",v:75},
         {l:"Clasificadas → Con DL creado",v:74},
         {l:"En seguimiento → Activadas (hist.)",v:74},
-        {l:"Total identificadas → Activas",v:55}
+        {l:"Total identificadas → Activas",v:69}
       ].map(function(r){ return `
       <div style="margin-bottom:10px;">
         <div style="display:flex;justify-content:space-between;font-size:11px;margin-bottom:3px;">
@@ -919,10 +941,10 @@ function viewMercadeo() {
 function viewProyectos() {
   return `
   <div class="kg">
-    <div class="kp kgg"><div class="kic"><i class="ti ti-circle-check"></i></div><div class="kv">31</div><div class="kla">Cliente creado DL</div><div class="ksb">En Proyectos</div></div>
-    <div class="kp ko"><div class="kic"><i class="ti ti-loader"></i></div><div class="kv">11</div><div class="kla">En seguimiento</div></div>
+    <div class="kp kgg"><div class="kic"><i class="ti ti-circle-check"></i></div><div class="kv">54</div><div class="kla">Cliente creado DL</div><div class="ksb">En Proyectos</div></div>
+    <div class="kp ko"><div class="kic"><i class="ti ti-loader"></i></div><div class="kv">10</div><div class="kla">En seguimiento</div></div>
     <div class="kp krr"><div class="kic"><i class="ti ti-clock-pause"></i></div><div class="kv">14</div><div class="kla">Potenciales</div></div>
-    <div class="kp kn"><div class="kic"><i class="ti ti-calendar"></i></div><div class="kv">6d</div><div class="kla">Promedio activación</div><div class="ksb">Últimas 4 activaciones</div></div>
+    <div class="kp kn"><div class="kic"><i class="ti ti-calendar"></i></div><div class="kv">1d</div><div class="kla">Promedio activación</div><div class="ksb">Últimas 4 activaciones</div></div>
   </div>
 
   <div class="card">
@@ -964,7 +986,7 @@ function viewProyectos() {
       </div>`; }).join("")}
     </div>
     <div style="margin-top:10px;padding-top:8px;border-top:1px solid #F4F4F4;font-size:11px;color:#888;">
-      Total acumulado: <strong style="color:#003C71;">31 empresas</strong> con DL creado (Mar–Jun 2026). 23 de ellas activadas solo en junio.
+      Total acumulado: <strong style="color:#003C71;">54 empresas</strong> con DL creado (Mar–Jul 2026). 24 de ellas activadas en junio y 22 en julio.
     </div>
   </div>`;
 }
@@ -998,7 +1020,7 @@ function renderCharts(view) {
           labels:["Mar","Abr","May","Jun","Jul","Ago","Sep","Oct","Nov","Dic"],
           datasets:[{
             label:"Nuevas activaciones",
-            data:[1,0,7,23,0,0,0,0,0,0],
+            data:[1,0,7,24,22,0,0,0,0,0],
             backgroundColor:"rgba(0,60,113,.22)",
             borderColor:"#003C71",
             borderWidth:2,
@@ -1006,7 +1028,7 @@ function renderCharts(view) {
             order:2
           },{
             label:"Acumulado",
-            data:[1,1,8,31,31,31,31,31,31,31],
+            data:[1,1,8,32,54,54,54,54,54,54],
             type:"line",
             borderColor:"#F26522",
             backgroundColor:"rgba(242,101,34,.07)",
@@ -1038,7 +1060,7 @@ function renderCharts(view) {
 
   if(view==="pipeline") {
     var ctx2 = document.getElementById("c-cats");
-    if(ctx2) new Chart(ctx2,{type:"bar",data:{labels:["Cat. 20","Sin clasificar","Cat. 1","Cat. 2","Cat. 5","Cat. 6","Cat. 10","Cat. 8","Cat. 19","Cat. 3","Cat. 4","Cat. 7","Cat. 11","Cat. 12","Cat. 17"],datasets:[{data:[13,9,8,5,5,3,3,2,2,1,1,1,1,1,1],backgroundColor:["#003C71","#F26522","#27AE60","#2980B9","#8E44AD","#E74C3C","#16A085","#D35400","#1A5276","#7F8C8D","#F39C12","#9B59B6","#1ABC9C","#34495E","#C0392B"],borderRadius:4}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{grid:{display:false},ticks:{font:{size:10}}},y:{beginAtZero:true,ticks:{stepSize:1},grid:{color:"rgba(0,0,0,.05)"}},}}});
+    if(ctx2) new Chart(ctx2,{type:"bar",data:{labels:["Sin clasificar","Cat. 20","Cat. 1","Cat. 2","Cat. 5","Cat. 6","Cat. 10","Cat. 8","Cat. 19","Cat. 4","Cat. 3","Cat. 7","Cat. 11","Cat. 12","Cat. 17"],datasets:[{data:[29,13,8,6,5,3,3,2,2,2,1,1,1,1,1],backgroundColor:["#003C71","#F26522","#27AE60","#2980B9","#8E44AD","#E74C3C","#16A085","#D35400","#1A5276","#7F8C8D","#F39C12","#9B59B6","#1ABC9C","#34495E","#C0392B"],borderRadius:4}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{grid:{display:false},ticks:{font:{size:10}}},y:{beginAtZero:true,ticks:{stepSize:1},grid:{color:"rgba(0,0,0,.05)"}},}}});
   }
 
   if(view==="impulso") {
@@ -1279,16 +1301,16 @@ function renderCharts(view) {
 
   if(view==="masif") {
     var ctx3 = document.getElementById("c-gauge");
-    if(ctx3) new Chart(ctx3,{type:"doughnut",data:{labels:["Activas","Pendientes"],datasets:[{data:[1.32,98.68],backgroundColor:["#27AE60","#F0F0F0"],borderWidth:0,circumference:180,rotation:270}]},options:{responsive:true,maintainAspectRatio:false,cutout:"72%",plugins:{legend:{display:false},tooltip:{enabled:false}}}});
+    if(ctx3) new Chart(ctx3,{type:"doughnut",data:{labels:["Activas","Pendientes"],datasets:[{data:[2.30,97.70],backgroundColor:["#27AE60","#F0F0F0"],borderWidth:0,circumference:180,rotation:270}]},options:{responsive:true,maintainAspectRatio:false,cutout:"72%",plugins:{legend:{display:false},tooltip:{enabled:false}}}});
     var ctx4 = document.getElementById("c-radar");
     if(ctx4) new Chart(ctx4,{type:"radar",data:{labels:["Adopción","Clasificación","Seguimiento","Activación","Onboarding","Retención"],datasets:[{label:"Estado actual",data:[25,81,56,25,100,75],borderColor:"#F26522",backgroundColor:"rgba(242,101,34,.15)",pointBackgroundColor:"#F26522"},{label:"Meta",data:[100,100,100,100,100,100],borderColor:"#003C71",backgroundColor:"rgba(0,60,113,.05)",pointBackgroundColor:"#003C71",borderDash:[4,3]}]},options:{responsive:true,maintainAspectRatio:false,scales:{r:{grid:{color:"rgba(0,0,0,.08)"},ticks:{display:false},suggestedMin:0,suggestedMax:100}},plugins:{legend:{display:true,position:"bottom",labels:{font:{size:10},boxWidth:10}}}}});
   }
 
   if(view==="mercadeo") {
     var ctx5 = document.getElementById("c-pipeline");
-    if(ctx5) new Chart(ctx5,{type:"bar",data:{labels:["Identificadas","Clasificadas","En seguimiento","Con demo","Cliente creado DL"],datasets:[{data:[56,47,11,31,31],backgroundColor:["rgba(0,60,113,.15)","rgba(41,128,185,.2)","rgba(83,74,183,.2)","rgba(242,101,34,.25)","rgba(39,174,96,.35)"],borderColor:["#003C71","#2980B9","#534AB7","#F26522","#27AE60"],borderWidth:2,borderRadius:4}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{grid:{display:false}},y:{beginAtZero:true,ticks:{stepSize:2},grid:{color:"rgba(0,0,0,.05)"}}}}});
+    if(ctx5) new Chart(ctx5,{type:"bar",data:{labels:["Identificadas","Clasificadas","En seguimiento","Con demo","Cliente creado DL"],datasets:[{data:[78,49,10,54,54],backgroundColor:["rgba(0,60,113,.15)","rgba(41,128,185,.2)","rgba(83,74,183,.2)","rgba(242,101,34,.25)","rgba(39,174,96,.35)"],borderColor:["#003C71","#2980B9","#534AB7","#F26522","#27AE60"],borderWidth:2,borderRadius:4}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{grid:{display:false}},y:{beginAtZero:true,ticks:{stepSize:2},grid:{color:"rgba(0,0,0,.05)"}}}}});
     var ctx6 = document.getElementById("c-segcats");
-    if(ctx6) new Chart(ctx6,{type:"pie",data:{labels:["Cat. 20 (13)","Sin clasificar (9)","Cat. 1 (8)","Otras (26)"],datasets:[{data:[13,9,8,26],backgroundColor:["#003C71","#F26522","#27AE60","#D0D0D0"],borderWidth:0}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:true,position:"right",labels:{font:{size:10},boxWidth:10}}}}});
+    if(ctx6) new Chart(ctx6,{type:"pie",data:{labels:["Sin clasificar (29)","Cat. 20 (13)","Cat. 1 (8)","Otras (28)"],datasets:[{data:[29,13,8,28],backgroundColor:["#003C71","#F26522","#27AE60","#D0D0D0"],borderWidth:0}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:true,position:"right",labels:{font:{size:10},boxWidth:10}}}}});
   }
 }
 
