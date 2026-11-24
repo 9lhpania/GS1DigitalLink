@@ -1005,19 +1005,22 @@ function viewAnalitica() {
     "Abr":{esc:0.396305, com:0.079261},
     "May":{esc:0.407772, com:0.081554},
     "Jun":{esc:0.560232, com:0.112046},
-    "Jul":{esc:0.995104, com:0.199021}
+    "Jul":{esc:0.995104, com:0.199021},
+    "Ago":{esc:0.35, com:0.07},
+    "Sep":{esc:0.36, com:0.072},
+    "Oct":{esc:0.11, com:0.022}
   };
   var FIXED_COST = 5.0;
-  // Mes base para proyección Ago–Dic = Julio (último mes con costo real reportado)
-  var baseProjMonth = monthlyCosts["Jul"];
+  // Mes base para proyección Nov–Dic = Octubre (último mes con costo real reportado)
+  var baseProjMonth = monthlyCosts["Oct"];
   var monthlyTotalProj = baseProjMonth.esc + baseProjMonth.com + FIXED_COST;
 
   function costOfMonth(monthData){
     return {esc:monthData.esc, comm:monthData.com, fixed:FIXED_COST, total: monthData.esc + monthData.com + FIXED_COST};
   }
 
-  var realMonthsList = ["Abr","May","Jun","Jul"];
-  var projMonthsList = ["Ago","Sep","Oct","Nov","Dic"];
+  var realMonthsList = ["Abr","May","Jun","Jul","Ago","Sep","Oct"];
+  var projMonthsList = ["Nov","Dic"];
 
   function sumCosts(monthDataList){
     var acc = {esc:0, comm:0, fixed:0, total:0};
@@ -1039,16 +1042,16 @@ function viewAnalitica() {
   // Escaneos reales/proyectados (solo para mostrar volumen, no para calcular costo)
   var realScansByMonth = {"Abr":871,"May":964,"Jun":1506,"Jul":1936,"Ago":1320,"Sep":1303,"Oct":764,"Nov":856};
   var totalRealScans = 9520;
-  // Escaneos reales solo del período con costo real reportado (Abr–Jul), para la tarjeta de costos
-  var scansCostPeriod = realScansByMonth["Abr"] + realScansByMonth["May"] + realScansByMonth["Jun"] + realScansByMonth["Jul"];
+  // Escaneos reales solo del período con costo real reportado (Abr–Oct), para la tarjeta de costos
+  var scansCostPeriod = realScansByMonth["Abr"] + realScansByMonth["May"] + realScansByMonth["Jun"] + realScansByMonth["Jul"] + realScansByMonth["Ago"] + realScansByMonth["Sep"] + realScansByMonth["Oct"];
   var totalProjScans = ["Dic"].reduce(function(s,m){ return s + (proyectado[m]||0); },0);
 
   // Tabla de costos
   function fmtUSD(v){ return "$" + v.toFixed(2); }
   var costRows = [
-    {desc:"Escaneos — costo mensual real (Abr–Jul)", months:4, subtotal:costsReal.esc, note:"Monto total mensual reportado, 4 meses"},
-    {desc:"Escaneos — proyección (Ago–Dic)",         months:5, subtotal:costsProj.esc, note:"Estabilizado al monto de Julio × 5 meses"},
-    {desc:"Comisión proveedor (real + proyectada)",  months:9, subtotal:costsTotal.comm, note:"20% del monto de escaneos — validado en los 4 meses reales"},
+    {desc:"Escaneos — costo mensual real (Abr–Oct)", months:7, subtotal:costsReal.esc, note:"Monto total mensual reportado, 7 meses"},
+    {desc:"Escaneos — proyección (Nov–Dic)",         months:2, subtotal:costsProj.esc, note:"Estabilizado al monto de Octubre × 2 meses"},
+    {desc:"Comisión proveedor (real + proyectada)",  months:9, subtotal:costsTotal.comm, note:"20% del monto de escaneos — validado en los 7 meses reales"},
     {desc:"Costo fijo infraestructura",               months:9, subtotal:costsTotal.fixed, note:"$5 × 9 meses (Abr–Dic 2026)"},
   ];
   var costTableRows = costRows.map(function(r,i){
@@ -1079,12 +1082,12 @@ function viewAnalitica() {
     + '<div style="background:#D4EFDF;border-radius:6px;padding:8px 14px;flex:1;min-width:140px;">'
     +   '<div style="font-size:10px;color:#1A6B33;font-weight:700;text-transform:uppercase;margin-bottom:2px;">Costo actual (real)</div>'
     +   '<div style="font-size:18px;font-weight:700;color:#1A6B33;">'+fmtUSD(costsReal.total)+'</div>'
-    +   '<div style="font-size:10px;color:#1A6B33;">4 meses reales (Abr–Jul) · '+scansCostPeriod+' escaneos</div>'
+    +   '<div style="font-size:10px;color:#1A6B33;">7 meses reales (Abr–Oct) · '+scansCostPeriod.toLocaleString()+' escaneos</div>'
     + '</div>'
     + '<div style="background:#EEF0FF;border-radius:6px;padding:8px 14px;flex:1;min-width:140px;">'
     +   '<div style="font-size:10px;color:#3D35A0;font-weight:700;text-transform:uppercase;margin-bottom:2px;">Proyección a dic 2026</div>'
     +   '<div style="font-size:18px;font-weight:700;color:#3D35A0;">'+fmtUSD(costsTotal.total)+'</div>'
-    +   '<div style="font-size:10px;color:#3D35A0;">Monto mensual estabilizado (=Jul) × 5 meses</div>'
+    +   '<div style="font-size:10px;color:#3D35A0;">Monto mensual estabilizado (=Oct) × 2 meses</div>'
     + '</div>'
     + '<div style="background:#FEF0E8;border-radius:6px;padding:8px 14px;flex:1;min-width:140px;">'
     +   '<div style="font-size:10px;color:#B84C18;font-weight:700;text-transform:uppercase;margin-bottom:2px;">Escaneos proyectados</div>'
@@ -1093,7 +1096,7 @@ function viewAnalitica() {
     + '</div>'
     + '</div>'
     + '<div style="margin-top:10px;font-size:10px;color:#888;line-height:1.5;">'
-    +   '<i class="ti ti-info-circle" style="vertical-align:-2px;margin-right:3px;"></i>Los montos de "Escaneos" y "Comisión" son costos totales mensuales reportados por el proveedor (no tarifas por escaneo individual). La proyección Ago–Dic asume que el monto mensual se mantiene estable al nivel de Julio.'
+    +   '<i class="ti ti-info-circle" style="vertical-align:-2px;margin-right:3px;"></i>Los montos de "Escaneos" y "Comisión" son costos totales mensuales reportados por el proveedor (no tarifas por escaneo individual). La proyección Nov–Dic asume que el monto mensual se mantiene estable al nivel de Octubre.'
     + '</div></div>';
 
   var roadmap = '<div class="card">'
@@ -1103,8 +1106,8 @@ function viewAnalitica() {
     + '<div style="margin-top:10px;padding-top:8px;border-top:1px solid #F4F4F4;display:flex;gap:14px;font-size:10px;color:#888;flex-wrap:wrap;">'
     + '<span style="display:flex;align-items:center;gap:4px;"><span style="width:10px;height:10px;border-radius:2px;background:rgba(0,60,113,.22);border:2px solid #003C71;display:inline-block;"></span>Escaneos reales</span>'
     + '<span style="display:flex;align-items:center;gap:4px;"><span style="width:10px;height:10px;border-radius:2px;background:rgba(242,101,34,.22);border:2px solid #F26522;display:inline-block;"></span>Escaneos proyectados (+20%/mes)</span>'
-    + '<span style="display:flex;align-items:center;gap:4px;"><span style="width:9px;height:9px;border-radius:50%;background:#534AB7;border:2px solid #fff;box-shadow:0 0 0 1px #534AB7;display:inline-block;"></span>Costo real (Abr–Jul)</span>'
-    + '<span style="display:flex;align-items:center;gap:4px;"><span style="width:9px;height:9px;background:#fff;border:2px solid rgba(83,74,183,.55);display:inline-block;transform:rotate(45deg);"></span>Costo proyectado (Ago–Dic, sin dato en Excel)</span>'
+    + '<span style="display:flex;align-items:center;gap:4px;"><span style="width:9px;height:9px;border-radius:50%;background:#534AB7;border:2px solid #fff;box-shadow:0 0 0 1px #534AB7;display:inline-block;"></span>Costo real (Abr–Oct)</span>'
+    + '<span style="display:flex;align-items:center;gap:4px;"><span style="width:9px;height:9px;background:#fff;border:2px solid rgba(83,74,183,.55);display:inline-block;transform:rotate(45deg);"></span>Costo proyectado (Nov–Dic, sin dato en Excel)</span>'
     + '</div></div>';
 
   return kpis + roadmap + tablaClientes + grid2 + costTable;
@@ -1421,16 +1424,19 @@ function renderCharts(view) {
         "Abr":{esc:0.396305, com:0.079261},
         "May":{esc:0.407772, com:0.081554},
         "Jun":{esc:0.560232, com:0.112046},
-        "Jul":{esc:0.995104, com:0.199021}
+        "Jul":{esc:0.995104, com:0.199021},
+        "Ago":{esc:0.35, com:0.07},
+        "Sep":{esc:0.36, com:0.072},
+        "Oct":{esc:0.11, com:0.022}
       };
       var costLine = allM.map(function(m){
         var c = realCosts[m];
         return c ? parseFloat((c.esc + c.com + 5.0).toFixed(2)) : null;
       });
       // Continuación proyectada del costo — meses sin dato real en la hoja "Costos"
-      // (Ago–Dic), estabilizado al monto de Julio (último mes real). Incluye Jul como
+      // (Nov–Dic), estabilizado al monto de Octubre (último mes real). Incluye Oct como
       // punto de enlace para que la línea se vea continua.
-      var lastRealCostMonth = "Jul";
+      var lastRealCostMonth = "Oct";
       var lastRealCostVal = costLine[allM.indexOf(lastRealCostMonth)];
       var projMonthlyCost = parseFloat((realCosts[lastRealCostMonth].esc + realCosts[lastRealCostMonth].com + 5.0).toFixed(2));
       var costLineProj = allM.map(function(m){
